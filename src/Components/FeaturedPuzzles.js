@@ -1,7 +1,7 @@
 import {Card} from "react-bootstrap"
 import {useState, useRef, useEffect} from 'react'
 
-function FeaturedPuzzles (props){
+ function FeaturedPuzzles (props){
 
     const [currentPuzzlesArray, setCurrentPuzzlesArray] = useState([])
 
@@ -31,3 +31,5 @@ function FeaturedPuzzles (props){
 
     )
 }
+
+export default FeaturedPuzzles

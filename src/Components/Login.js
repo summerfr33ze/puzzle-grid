@@ -22,3 +22,5 @@ function Login() {
         </Form>
     )
 }
+
+export default Login
