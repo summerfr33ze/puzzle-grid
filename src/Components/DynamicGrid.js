@@ -1,5 +1,4 @@
 import {useState, useRef, useEffect, React, createElement} from 'react'
-import {Form} from 'react-bootstrap'
 import {NameCell, AnswerCell} from './Cell'
 
  function DynamicGrid(props){
@@ -41,7 +40,7 @@ import {NameCell, AnswerCell} from './Cell'
     
     
         return (
-            <Form className="dynamic-grid" style={formStyle}>{cellArray}</Form>
+            <div className="dynamic-grid" style={formStyle}>{cellArray}</div>
         )
                 
                 

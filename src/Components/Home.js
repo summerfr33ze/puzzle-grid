@@ -11,7 +11,7 @@ function Home (props) {
             <div className="header">
                 <div className="header-left">
                     <img className="logo-icon"></img>
-                    <div className="title">Puzzle Grid</div>
+                    <div className="title"><span className="title-span">Puzzle</span> Grid</div>
                 </div>
                 <div className="genres"></div>
                 <div className="header-right">

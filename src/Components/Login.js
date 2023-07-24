@@ -13,7 +13,7 @@ function Login() {
     }
 
     return(
-        <Form>
+        <Form className="login-form">
             <Form.Label htmlFor="username">Username</Form.Label>
             <Form.Control type="text" name="username" ref={username}></Form.Control>
             <Form.Label htmlFor="password">Password</Form.Label>

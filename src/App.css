@@ -1,4 +1,32 @@
+@font-face {
+    font-family: Lilita;
+    src: url("./fonts/Lilita")
+}
+
+
+.header {
+    height: 5vh;
+    font-size: 2rem;
+    background-color: darkslategray;
+    
+}
+
+.title {
+    color: #00FA9A;
+    font-family: Lilita;
+}
+
+.title-span {
+    color: #9370DB;
+    
+}
 
 .grid-cell {
     border: 1px solid black;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
