@@ -1,4 +1,4 @@
-import {Form} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap'
 import {useEffect, useState, useRef} from 'react'
 
 
@@ -9,35 +9,32 @@ function NameCell(props){
 
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const cellName = useRef(null)
-    let currentCellName
+    const currentCellName = useRef('')
 
     
-    function submitCellData (){
+    function submitCellData (e){
         e.preventDefault()
         setHasBeenSubmitted(true)
-
     }
 
     useEffect(() => {
-       currentCellName = cellName.current.value
+       currentCellName.current = cellName
     }, [hasBeenSubmitted])
 
-    if(!hasBeenSubmitted){
+        if (!hasBeenSubmitted){
         return (
-            <Form className="grid-cell" onsubmit={(e) => submitCellData(e)}>
-                <Form.Label htmlFor="cell-name">Cell Name</Form.Label>
+            
+            <Form className="grid-cell" onSubmit={(e) => submitCellData(e)}>
+                <Form.Label htmlFor="cell-name">Name</Form.Label>
                 <Form.Control name="cell-name" ref={cellName}></Form.Control>
-                <Form.Submit hidden></Form.Submit>
+                <Button type="submit"></Button>
             </Form>
-            )
-    }
-
-    else {
-        return (
-            <div>{currentCellName}</div>
+           
         )
-    }
-
+        }
+        else {
+            return <div></div>
+        }
     
 }
 
@@ -47,28 +44,30 @@ function AnswerCell(props) {
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const hint = useRef(null)
     const answer = useRef(null)
-    let currentHint 
-    let currentAnswer
+    const currentHint = useRef(null)
+    const currentAnswer = useRef(null)
 
-    function submitCellData (){
+    function submitCellData (e){
         e.preventDefault()
         setHasBeenSubmitted(true)
 
     }
 
     useEffect(()=>{
-        currentHint = hint.current.value
-        currentAnswer = answer.current.value
+        currentHint.current = hint.current.value
+        currentAnswer.current = answer.current.value
     }, [hasBeenSubmitted])
     
     if(!hasBeenSubmitted){
         return (
-            <Form className="grid-cell form-cell" onsubmit={(e) => submitCellData(e)}>
+        
+                <Form  className="grid-cell" onSubmit={(e) => submitCellData(e)}>
                 <Form.Label htmlFor="answer">Answer</Form.Label>
                 <Form.Control name="answer" ref={answer}></Form.Control>
                 <Form.Label htmlFor="hint">Hint</Form.Label>
                 <Form.Control name="hint" ref={hint}></Form.Control>
-            </Form>
+                </Form>
+            
         )
     }
     else {

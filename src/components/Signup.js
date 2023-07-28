@@ -1,4 +1,4 @@
-import e from 'express'
+import {Form, Button} from 'react-bootstrap'
 import {useEffect, useState, useRef} from 'react'
 
 
@@ -9,7 +9,7 @@ function Signup (props){
 
 
 
-    function signUpUser(){
+    function signUpUser(e){
         e.preventDefault()
         const currentUsername = username.current.value
         const currentPassword = password.current.value
@@ -25,7 +25,7 @@ function Signup (props){
             <Form.Control type="password" name="password" ref={password}></Form.Control>
             <Form.Label htmlFor="confirm-password">Confirm Password</Form.Label>
             <Form.Control type="password" name="confirm-password" ref={confirmPassword}></Form.Control>
-            <Button variant="secondary" className="login-form-button" onClick={(e) => {signupUser(event)}}>Sign Up</Button>
+            <Button variant="secondary" className="login-form-button" onClick={(e) => {signUpUser(e)}}>Sign Up</Button>
         </Form>
   )
 }

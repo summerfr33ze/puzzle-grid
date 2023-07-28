@@ -1,19 +1,46 @@
 @font-face {
     font-family: Lilita;
-    src: url("./fonts/Lilita")
+    src: url("./fonts/Lilita.ttf")
+}
+
+html, body, #root {
+    height: 100%;
 }
 
 
 .header {
-    height: 5vh;
-    font-size: 2rem;
-    background-color: darkslategray;
-    
+    height: 10vh;
+    font-size: 3rem;
+    background-color: rgb(31, 31, 31);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.genres {
+    display: flex;
+    gap: 1vh;
+}
+
+.genres button, .header-right button {
+    background-color:black;
+    height: 8vh;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: none;
+    color: #00FA9A;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.header-right button {
+    color: #9370DB;
 }
 
 .title {
     color: #00FA9A;
     font-family: Lilita;
+    display: inline-block;
 }
 
 .title-span {
@@ -21,9 +48,44 @@
     
 }
 
+.header-right {
+    display: flex;
+}
+
 .grid-cell {
     border: 1px solid black;
+    font-size: 1.5rem;
 }
+
+.create-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+
+}
+
+.create-page button {
+    background-color:black;
+    height: 8vh;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: none;
+    color: #00FA9A;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.dynamic-grid {
+    display: grid;
+    height: 40vh;
+    width: 40vh;
+
+}
+
+
 
 .login-form {
     display: flex;

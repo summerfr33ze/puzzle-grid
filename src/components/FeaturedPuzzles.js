@@ -1,11 +1,12 @@
 import {Card} from "react-bootstrap"
 import {useState, useRef, useEffect} from 'react'
+import {Button} from 'react-bootstrap'
 
  function FeaturedPuzzles (props){
 
     const [currentPuzzlesArray, setCurrentPuzzlesArray] = useState([])
 
-    if (props.type === "home"){
+    /* if (props.type === "home"){
         async function getFeaturedHomePuzzles() {
             const homePuzzles = await fetch(
                 //fetchez la vache! 
@@ -13,9 +14,11 @@ import {useState, useRef, useEffect} from 'react'
             )
         }
     }
+
+    */
     
     return(
-        
+        /*
             <Card>
             <Card.Img variant="top" src="" />
                     <Card.Body>
@@ -25,8 +28,10 @@ import {useState, useRef, useEffect} from 'react'
                             <Button onClick={navigateToReview} className="navigate-button" >Play</Button>
                             </Card.Body>
         </Card>
+
+        */
         
-        
+        <div>placeholder</div>
         
 
     )
