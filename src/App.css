@@ -54,17 +54,31 @@ html, body, #root {
 
 .grid-cell {
     border: 1px solid black;
-    font-size: 1.5rem;
+    padding: 10px;
+    font-size: .8rem;
 }
 
 .create-page {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    height: 100%;
+    font-size: 2rem;
+}
 
+.color-container {
+    display:flex;
+    gap: 3vw;
+}
+
+
+
+.grid-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
 }
 
 .create-page button {
@@ -78,11 +92,18 @@ html, body, #root {
     border-radius: 4px;
 }
 
+.nav-button:hover  {
+    color: #9370DB;
+}
+
+.grid-gen-button:hover {
+    color: #9370DB;
+}
+
 .dynamic-grid {
     display: grid;
-    height: 40vh;
-    width: 40vh;
-
+    margin: 20px;
+    
 }
 
 
@@ -92,3 +113,4 @@ html, body, #root {
     justify-content: center;
     align-items: center;
 }
+

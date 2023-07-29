@@ -1,5 +1,5 @@
 import {useEffect, useState, useRef} from 'react'
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import DynamicGrid from './DynamicGrid'
 
 function Create(props){
@@ -24,17 +24,17 @@ function Create(props){
 
     return (
         <div className="create-page">
-        <Form>
+        <Form className="grid-form">
         <Form.Label htmlFor="cells-per-side">How many cells per side?</Form.Label>
         <Form.Control type="number" name="cells-per-side"  ref={cellsPerSide}></Form.Control>
 
-        <Form.Group>
+        <Form.Group className="color-container">
         <Form.Label htmlFor="color-one">Choose Two Colors For Your Grid</Form.Label>
         <Form.Control type="color" className="choose-color" name="color-one" ref={colorOne}></Form.Control>
         <Form.Control type="color" className="choose-color" ref={colorTwo}></Form.Control>
         </Form.Group>
 
-        <Button variant="secondary" className="grid-gen-button" onClick={(event) => {generateGrid(event)}}>Create Grid</Button>
+        <button  className="grid-gen-button" onClick={(event) => {generateGrid(event)}}>Create Grid</button>
         </Form>
 
         <DynamicGrid hasHappenedOnce={hasHappenedOnce} chosenColorOne={chosenColorOne} chosenColorTwo={chosenColorTwo} chosenCellsPerSide={chosenCellsPerSide} />

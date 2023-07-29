@@ -12,6 +12,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
+
 const router = createBrowserRouter([
   {
     path: "/",

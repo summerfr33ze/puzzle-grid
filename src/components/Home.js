@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef} from "react"
-import Button from 'react-bootstrap/Button'
 import FeaturedPuzzles from "./FeaturedPuzzles"
 import {useNavigate, Link} from "react-router-dom"
 import '../App.css'
@@ -44,14 +43,14 @@ function Home (props) {
                     <div className="title"><span className="title-span">Puzzle</span> Grid</div>
                 </div>
                 <div className="genres">
-                    <Button  onClick={navigateToMiscellaneous}>Miscellaneous</Button>
-                    <Button  onClick={navigateToSports}>Sports</Button>
-                    <Button  onClick={navigateToNumbers}>Numbers</Button>
-                    <Button  onClick={navigateToTVandMovies}>TV and Movies</Button>
-                    <Button  onClick={navigateToLiterature}>Literature</Button>
+                    <button className="nav-button" onClick={navigateToMiscellaneous}>Miscellaneous</button>
+                    <button className="nav-button" onClick={navigateToSports}>Sports</button>
+                    <button className="nav-button" onClick={navigateToNumbers}>Numbers</button>
+                    <button className="nav-button" onClick={navigateToTVandMovies}>TV and Movies</button>
+                    <button className="nav-button" onClick={navigateToLiterature}>Literature</button>
                 </div>
                 <div className="header-right">
-                    <Button  onClick={navigateToCreate}>Create</Button>
+                    <button  onClick={navigateToCreate}>Create</button>
                     <div className="user">{}</div>
                     <img className="user-icon"></img>
                 </div>

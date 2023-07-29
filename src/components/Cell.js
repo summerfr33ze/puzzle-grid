@@ -8,32 +8,31 @@ import {useEffect, useState, useRef} from 'react'
 function NameCell(props){
 
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
-    const cellName = useRef(null)
-    const currentCellName = useRef('')
+    const [nameValue, setNameValue] = useState('')
 
-    
-    function submitCellData (e){
-        e.preventDefault()
-        setHasBeenSubmitted(true)
+    const handleChange = (event) => {
+        setNameValue(event.target.value)
     }
 
-    useEffect(() => {
-       currentCellName.current = cellName
-    }, [hasBeenSubmitted])
+    
+    function submitCellData (event){
+        event.preventDefault()
+        setHasBeenSubmitted(true)
+    }
 
         if (!hasBeenSubmitted){
         return (
             
-            <Form className="grid-cell" onSubmit={(e) => submitCellData(e)}>
+            <Form className="grid-cell" onSubmit={(event) => submitCellData(event)}>
                 <Form.Label htmlFor="cell-name">Name</Form.Label>
-                <Form.Control name="cell-name" ref={cellName}></Form.Control>
-                <Button type="submit"></Button>
+                <Form.Control name="cell-name" size="sm" onChange={handleChange}></Form.Control>
+                <Button type="submit" hidden></Button>
             </Form>
            
         )
         }
         else {
-            return <div></div>
+            return <div className="grid-cell">{nameValue}</div>
         }
     
 }
@@ -42,30 +41,33 @@ function NameCell(props){
 
 function AnswerCell(props) {
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
-    const hint = useRef(null)
-    const answer = useRef(null)
-    const currentHint = useRef(null)
-    const currentAnswer = useRef(null)
+    const [hintValue, setHintValue] = useState("")
+    const [answerValue, setAnswerValue] = useState("")
 
-    function submitCellData (e){
-        e.preventDefault()
+    const handleHintChange = (event) => {
+        setHintValue(event.target.value)
+    }
+
+    const handleAnswerChange = (event) => {
+        setAnswerValue(event.target.value)
+    }
+
+    function submitCellData (event){
+        event.preventDefault()
         setHasBeenSubmitted(true)
 
     }
 
-    useEffect(()=>{
-        currentHint.current = hint.current.value
-        currentAnswer.current = answer.current.value
-    }, [hasBeenSubmitted])
     
     if(!hasBeenSubmitted){
         return (
         
-                <Form  className="grid-cell" onSubmit={(e) => submitCellData(e)}>
-                <Form.Label htmlFor="answer">Answer</Form.Label>
-                <Form.Control name="answer" ref={answer}></Form.Control>
+                <Form  className="grid-cell" onSubmit={(event) => submitCellData(event)}>
+                <Form.Label htmlFor="answer" >Answer</Form.Label>
+                <Form.Control name="answer" size="sm" onChange={handleAnswerChange} ></Form.Control>
                 <Form.Label htmlFor="hint">Hint</Form.Label>
-                <Form.Control name="hint" ref={hint}></Form.Control>
+                <Form.Control name="hint" size="sm" onChange={handleHintChange} ></Form.Control>
+                <button type="submit" hidden></button>
                 </Form>
             
         )
@@ -73,8 +75,8 @@ function AnswerCell(props) {
     else {
         return (
             <div className="grid-cell div-cell">
-                <div>*{currentHint}*</div>
-                <div>{currentAnswer}</div>
+                <div>* {hintValue} *</div>
+                <div>{answerValue}</div>
             </div>
         )
     }
