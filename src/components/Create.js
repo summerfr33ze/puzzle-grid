@@ -8,17 +8,23 @@ function Create(props){
     const colorOne = useRef(null)
     const colorTwo = useRef(null)
     const hasHappenedOnce = useRef(false)
+    const [cellArray, setCellArray] = useState([])
 
     const [chosenColorOne, setchosenColorOne] = useState("")
     const [chosenColorTwo, setchosenColorTwo] = useState("")
     const [chosenCellsPerSide, setChosenCellsPerSide] = useState(0)
 
-    function generateGrid(e){
+    function generateGrid(event){
         hasHappenedOnce.current = false
-        e.preventDefault()
+        event.preventDefault()
         setchosenColorOne(colorOne.current.value)
         setchosenColorTwo(colorTwo.current.value)
         setChosenCellsPerSide(cellsPerSide.current.value)
+        
+    }
+
+    function submitPuzzle(event){
+        event.preventDefault()
         
     }
 
@@ -33,11 +39,15 @@ function Create(props){
         <Form.Control type="color" className="choose-color" name="color-one" ref={colorOne}></Form.Control>
         <Form.Control type="color" className="choose-color" ref={colorTwo}></Form.Control>
         </Form.Group>
-
-        <button  className="grid-gen-button" onClick={(event) => {generateGrid(event)}}>Create Grid</button>
+        
+        <div className="btn-container">
+        <button  className="green-txt-btn"  onClick={(event) => {generateGrid(event)}}>Create Grid</button>
+        <button className="green-txt-btn" onClick={(event) => {submitPuzzle(event)}}>Submit Puzzle</button>
+        </div>
+        
         </Form>
 
-        <DynamicGrid hasHappenedOnce={hasHappenedOnce} chosenColorOne={chosenColorOne} chosenColorTwo={chosenColorTwo} chosenCellsPerSide={chosenCellsPerSide} />
+        <DynamicGrid hasHappenedOnce={hasHappenedOnce} chosenColorOne={chosenColorOne} chosenColorTwo={chosenColorTwo} chosenCellsPerSide={chosenCellsPerSide} cellArray={cellArray} setCellArray={setCellArray} />
         </div>
         
 

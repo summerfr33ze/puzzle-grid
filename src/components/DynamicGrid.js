@@ -3,7 +3,6 @@ import {NameCell, AnswerCell} from './Cell'
 import uniqid from 'uniqid'
 
  function DynamicGrid(props){
-    const [cellArray, setCellArray] = useState([])
     const isInitialRender = useRef(true)
 
 
@@ -25,8 +24,7 @@ import uniqid from 'uniqid'
             tempCellArray.push(<NameCell key={uniqid()}/>, <AnswerCell key={uniqid()} />)
             
         }
-        setCellArray(tempCellArray)
-        console.log(cellArray)
+        props.setCellArray(tempCellArray)
 
         props.hasHappenedOnce.current = true
     }
@@ -39,12 +37,12 @@ import uniqid from 'uniqid'
     
         
 
-    },[props.chosenColorOne, props.ChosenColorTwo, props.chosenCellsPerSide, cellArray])
+    },[props.chosenColorOne, props.ChosenColorTwo, props.chosenCellsPerSide, props.cellArray])
     
     
     
         return (
-            <div className="dynamic-grid" style={{gridTemplateColumns: `repeat(${props.chosenCellsPerSide}, 1fr 2fr)`, gridTemplateRows: `repeat(${props.chosenCellsPerSide}, 1fr)`}}>{cellArray}</div>
+            <div className="dynamic-grid" style={{gridTemplateColumns: `repeat(${props.chosenCellsPerSide}, 1fr 2fr)`, gridTemplateRows: `repeat(${props.chosenCellsPerSide}, 1fr)`}}>{props.cellArray}</div>
         )
                 
                 

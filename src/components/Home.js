@@ -43,14 +43,14 @@ function Home (props) {
                     <div className="title"><span className="title-span">Puzzle</span> Grid</div>
                 </div>
                 <div className="genres">
-                    <button className="nav-button" onClick={navigateToMiscellaneous}>Miscellaneous</button>
-                    <button className="nav-button" onClick={navigateToSports}>Sports</button>
-                    <button className="nav-button" onClick={navigateToNumbers}>Numbers</button>
-                    <button className="nav-button" onClick={navigateToTVandMovies}>TV and Movies</button>
-                    <button className="nav-button" onClick={navigateToLiterature}>Literature</button>
+                    <button className="green-txt-btn" onClick={navigateToMiscellaneous}>Miscellaneous</button>
+                    <button className="green-txt-btn" onClick={navigateToSports}>Sports</button>
+                    <button className="green-txt-btn" onClick={navigateToNumbers}>Numbers</button>
+                    <button className="green-txt-btn" onClick={navigateToTVandMovies}>TV and Movies</button>
+                    <button className="green-txt-btn" onClick={navigateToLiterature}>Literature</button>
                 </div>
                 <div className="header-right">
-                    <button  onClick={navigateToCreate}>Create</button>
+                    <button className="purple-txt-btn" onClick={navigateToCreate}>Create</button>
                     <div className="user">{}</div>
                     <img className="user-icon"></img>
                 </div>

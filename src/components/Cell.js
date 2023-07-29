@@ -32,7 +32,7 @@ function NameCell(props){
         )
         }
         else {
-            return <div className="grid-cell">{nameValue}</div>
+            return <div className="grid-cell div-cell">{nameValue}</div>
         }
     
 }

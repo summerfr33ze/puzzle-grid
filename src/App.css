@@ -22,19 +22,28 @@ html, body, #root {
     gap: 1vh;
 }
 
-.genres button, .header-right button {
+.green-txt-btn, .purple-txt-btn {
     background-color:black;
     height: 8vh;
     font-size: 1.4rem;
     font-weight: bold;
     border: none;
     color: #00FA9A;
-    padding: 10px;
     border-radius: 4px;
+    text-align: center;
+
 }
 
-.header-right button {
-    color: #9370DB;
+.green-txt-btn:hover {
+    color:  #ff4dff;
+}
+
+.purple-txt-btn:hover {
+    color: #00FA9A;
+}
+
+.purple-txt-btn {
+    color: #ff4dff;
 }
 
 .title {
@@ -44,7 +53,7 @@ html, body, #root {
 }
 
 .title-span {
-    color: #9370DB;
+    color: #ff4dff;
     
 }
 
@@ -56,6 +65,13 @@ html, body, #root {
     border: 1px solid black;
     padding: 10px;
     font-size: .8rem;
+}
+
+.div-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .create-page {
@@ -81,24 +97,15 @@ html, body, #root {
     font-size: 20px;
 }
 
-.create-page button {
-    background-color:black;
-    height: 8vh;
-    font-size: 1.4rem;
-    font-weight: bold;
-    border: none;
-    color: #00FA9A;
-    padding: 10px;
-    border-radius: 4px;
+.btn-container {
+    display: flex;
+    gap: 50px;
 }
 
-.nav-button:hover  {
-    color: #9370DB;
-}
 
-.grid-gen-button:hover {
-    color: #9370DB;
-}
+
+
+
 
 .dynamic-grid {
     display: grid;
