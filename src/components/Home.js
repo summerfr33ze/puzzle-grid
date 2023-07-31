@@ -50,7 +50,7 @@ function Home (props) {
                     <button className="green-txt-btn" onClick={navigateToLiterature}>Literature</button>
                 </div>
                 <div className="header-right">
-                    <button className="purple-txt-btn" onClick={navigateToCreate}>Create</button>
+                    <button className="green-txt-btn" onClick={navigateToCreate}>Create</button>
                     <div className="user">{}</div>
                     <img className="user-icon"></img>
                 </div>

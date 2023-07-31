@@ -22,6 +22,7 @@ html, body, #root {
     gap: 1vh;
 }
 
+
 .green-txt-btn, .purple-txt-btn {
     background-color:black;
     height: 8vh;
@@ -35,7 +36,7 @@ html, body, #root {
 }
 
 .green-txt-btn:hover {
-    color:  #ff4dff;
+    color:  #7B68EE;
 }
 
 .purple-txt-btn:hover {
@@ -43,7 +44,7 @@ html, body, #root {
 }
 
 .purple-txt-btn {
-    color: #ff4dff;
+    color: #7B68EE;
 }
 
 .title {
@@ -53,7 +54,7 @@ html, body, #root {
 }
 
 .title-span {
-    color: #ff4dff;
+    color: #7B68EE;
     
 }
 

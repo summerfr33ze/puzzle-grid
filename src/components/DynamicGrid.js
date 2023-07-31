@@ -1,5 +1,5 @@
 import {useState, useRef, useEffect, React, createElement} from 'react'
-import {NameCell, AnswerCell} from './Cell'
+
 import uniqid from 'uniqid'
 
  function DynamicGrid(props){
@@ -18,26 +18,10 @@ import uniqid from 'uniqid'
         let cellsPerSide = props.chosenCellsPerSide
 
 
-    const getGridCells = (cellsPerSide) => {
-        let tempCellArray = []
-        for(let i=1; i <= cellsPerSide ** 2; i++){
-            tempCellArray.push(<NameCell key={uniqid()}/>, <AnswerCell key={uniqid()} />)
-            
-        }
-        props.setCellArray(tempCellArray)
-
-        props.hasHappenedOnce.current = true
+    props.getGridCells(cellsPerSide)
     }
-
-    getGridCells(cellsPerSide)
-
-    }
-
-
     
-        
-
-    },[props.chosenColorOne, props.ChosenColorTwo, props.chosenCellsPerSide, props.cellArray])
+    },[props.chosenColorOne, props.ChosenColorTwo, props.chosenCellsPerSide, props.cellArray, isInitialRender])
     
     
     
