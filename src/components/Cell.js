@@ -9,16 +9,21 @@ function NameCell(props){
 
 
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
+    const [nameValue, setNameValue] = useState('')
+
+    
 
     useEffect(()=>{
-        console.log(props.nameValue)
+        props.nameCellUpdatesDataArray(props.id, nameValue)
     },[hasBeenSubmitted])
+
+       
+    
     
     
     function submitCellData (event){
         event.preventDefault()
         setHasBeenSubmitted(true)
-        props.updateDataArray(props.id)
     }
 
         if (!hasBeenSubmitted){
@@ -26,14 +31,14 @@ function NameCell(props){
             
             <Form className="grid-cell" onSubmit={(event) => submitCellData(event)}>
                 <Form.Label htmlFor="cell-name">Name</Form.Label>
-                <Form.Control name="cell-name" size="sm" onChange={props.handleNameValueChange}></Form.Control>
+                <Form.Control name="cell-name" size="sm" onChange={(event) => {setNameValue(event.target.value)}}></Form.Control>
                 <Button type="submit" hidden></Button>
             </Form>
            
         )
         }
         else {
-            return <div className="grid-cell div-cell">{props.nameValue}</div>
+            return <div className="grid-cell div-cell">{nameValue}</div>
         }
     
 }
@@ -43,12 +48,18 @@ function NameCell(props){
 function AnswerCell(props) {
 
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
+    const [answerValue, setAnswerValue] = useState('')
+    const [hintValue, setHintValue] = useState('')
     
+    useEffect(()=>{
+
+        props.answerCellUpdatesDataArray(props.id,answerValue, hintValue)
+
+    },[hasBeenSubmitted])
 
     function submitCellData (event){
         event.preventDefault()
         setHasBeenSubmitted(true)
-        props.updateDataArray(props.id)
     }
 
     
@@ -57,9 +68,9 @@ function AnswerCell(props) {
         
                 <Form  className="grid-cell" onSubmit={(event) => submitCellData(event)}>
                 <Form.Label htmlFor="answer" >Answer</Form.Label>
-                <Form.Control name="answer" size="sm" onChange={props.handleAnswerValueChange} ></Form.Control>
+                <Form.Control name="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
                 <Form.Label htmlFor="hint">Hint</Form.Label>
-                <Form.Control name="hint" size="sm" onChange={props.handleHintValueChange} ></Form.Control>
+                <Form.Control name="hint" size="sm" onChange={(event) => {setHintValue(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>
                 </Form>
             
@@ -68,8 +79,8 @@ function AnswerCell(props) {
     else {
         return (
             <div className="grid-cell div-cell">
-                <div>* {props.hintValue} *</div>
-                <div>{props.answerValue}</div>
+                <div>* {hintValue} *</div>
+                <div>{answerValue}</div>
             </div>
         )
     }

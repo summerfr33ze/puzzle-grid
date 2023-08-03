@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef, createContext} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import {Form} from 'react-bootstrap'
 import DynamicGrid from './DynamicGrid'
 import uniqid from 'uniqid'
@@ -8,44 +8,23 @@ function Create(props){
 
     const cellsPerSide = useRef(null)
     const colorOne = useRef(null)
+    const [dataArray, setDataArray] = useState([])
     const colorTwo = useRef(null)
-    const hasHappenedOnce = useRef(false)
-    const [cellArray, setCellArray] = useState([])
-    const dataArray = useRef([])
-    const [nameValue, setNameValue] = useState('')
-    const [answerValue, setAnswerValue] = useState('')
-    const [hintValue, setHintValue] = useState('')
-
-    const NameContext = createContext()
-
-
-    const handleNameValueChange = (event) => {
-        setNameValue(event.target.value)
-    }
-
-    const handleAnswerValueChange = (event) => {
-        setAnswerValue(event.target.value)
-    }
-
-    const handleHintValueChange = (event) => {
-        setHintValue(event.target.value)
-    }
-
-    
-    
-
-    
-
     const [chosenColorOne, setChosenColorOne] = useState("")
     const [chosenColorTwo, setChosenColorTwo] = useState("")
     const [chosenCellsPerSide, setChosenCellsPerSide] = useState(0)
+    const hasHappenedOnce = useRef(false)
+
+
 
     function generateGrid(event){
-        hasHappenedOnce.current = false
         event.preventDefault()
+        hasHappenedOnce.current = false
         setChosenColorOne(colorOne.current.value)
         setChosenColorTwo(colorTwo.current.value)
         setChosenCellsPerSide(cellsPerSide.current.value)
+        
+        
         
     }
 
@@ -56,49 +35,9 @@ function Create(props){
 
     
 
-    const getGridCells = (cellsPerSide) => {
-        let tempCellArray = []
-        let tempDataArray = []
-        for(let i=1; i <= cellsPerSide ** 2; i++){
-            let nameCellUniqid = uniqid()
-            let answerCellUniqid = uniqid()
-            let nameCellData = {
-                key: nameCellUniqid,
-                name: ''
-            }
-            let answerCellData = {
-                key: answerCellUniqid,
-                answer: '',
-                hint: ''
-
-            }
-            tempCellArray.push(<NameCell key={nameCellUniqid} id={nameCellUniqid} handleNameValueChange={handleNameValueChange} dataArray={dataArray} updateDataArray={updateDataArray} />, <AnswerCell key={answerCellUniqid} id={answerCellUniqid} handleAnswerValueChange={handleAnswerValueChange} handleHintValueChange={handleHintValueChange} updateDataArray={updateDataArray} hintValue={hintValue} answerValue={answerValue}/>)
-            tempDataArray.push(nameCellData, answerCellData)
-            
-        }
-        setCellArray(tempCellArray)
-        dataArray.current = tempDataArray
-        
     
-        hasHappenedOnce.current = true
-    }
 
-    function updateDataArray(key){
-        let tempArray = dataArray.current
-        for(let cellData in tempArray){
-            if(cellData.key === key){
-                if(cellData.name){
-                cellData.name = nameValue
-                }
-                else{
-                    cellData.answer = answerValue
-                    cellData.hint = hintValue
-                }
-            }
-        }
-        dataArray.current = tempArray
-    }
-
+    
     
 
 
@@ -122,7 +61,7 @@ function Create(props){
         
         </Form>
 
-        <DynamicGrid nameValue={nameValue} hasHappenedOnce={hasHappenedOnce} chosenColorOne={chosenColorOne} chosenColorTwo={chosenColorTwo} chosenCellsPerSide={chosenCellsPerSide} cellArray={cellArray} dataArray={dataArray} getGridCells={getGridCells}/>
+        <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} />
         </div>
         
 
