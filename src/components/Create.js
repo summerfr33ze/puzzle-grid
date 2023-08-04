@@ -8,7 +8,6 @@ function Create(props){
 
     const cellsPerSide = useRef(null)
     const colorOne = useRef(null)
-    const [dataArray, setDataArray] = useState([])
     const colorTwo = useRef(null)
     const [chosenColorOne, setChosenColorOne] = useState("")
     const [chosenColorTwo, setChosenColorTwo] = useState("")
@@ -64,6 +63,7 @@ function Create(props){
         <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} />
         </div>
         
+
 
 
     )

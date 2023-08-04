@@ -11,10 +11,18 @@ function NameCell(props){
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [nameValue, setNameValue] = useState('')
 
-    
-
     useEffect(()=>{
-        props.nameCellUpdatesDataArray(props.id, nameValue)
+            let tempArray = props.dataArray
+            for(let cellData in tempArray){
+                if(cellData.key === props.id){
+                    cellData.name = nameValue
+                }
+                else{return}
+            }
+            props.setDataArray(tempArray)
+        
+
+        
     },[hasBeenSubmitted])
 
        
