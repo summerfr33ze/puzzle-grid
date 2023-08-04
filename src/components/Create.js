@@ -13,6 +13,7 @@ function Create(props){
     const [chosenColorTwo, setChosenColorTwo] = useState("")
     const [chosenCellsPerSide, setChosenCellsPerSide] = useState(0)
     const hasHappenedOnce = useRef(false)
+    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
 
 
 
@@ -22,15 +23,11 @@ function Create(props){
         setChosenColorOne(colorOne.current.value)
         setChosenColorTwo(colorTwo.current.value)
         setChosenCellsPerSide(cellsPerSide.current.value)
-        
+        sethasBeenSubmitted(true)
         
         
     }
 
-    function submitPuzzle(event){
-        event.preventDefault()
-        
-    }
 
     
 
@@ -40,10 +37,17 @@ function Create(props){
     
 
 
-
+    if (hasBeenSubmitted === false){
     return (
-        <div className="create-page">
+    
         <Form className="grid-form">
+
+        <Form.Label HTMLfor="title">Puzzle Title</Form.Label>
+        <Form.Control type="text" name="title"></Form.Control>
+
+        <Form.Label HTMLfor="description">Description</Form.Label>
+        <Form.Control type="textarea" name="description"></Form.Control>
+
         <Form.Label htmlFor="cells-per-side">How many cells per side?</Form.Label>
         <Form.Control type="number" name="cells-per-side"  ref={cellsPerSide}></Form.Control>
 
@@ -52,6 +56,9 @@ function Create(props){
         <Form.Control type="color" className="choose-color" name="color-one" ref={colorOne}></Form.Control>
         <Form.Control type="color" className="choose-color" ref={colorTwo}></Form.Control>
         </Form.Group>
+
+
+        
         
         <div className="btn-container">
         <button  className="green-txt-btn"  onClick={(event) => {generateGrid(event)}}>Create Grid</button>
@@ -59,14 +66,21 @@ function Create(props){
         </div>
         
         </Form>
+    
+    )
+    }
+    else {
+        return <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} />
+    }
 
-        <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} />
-        </div>
+
+        
+        
         
 
 
 
-    )
+    
     
 }
 

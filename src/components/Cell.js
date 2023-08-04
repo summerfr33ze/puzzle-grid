@@ -11,22 +11,20 @@ function NameCell(props){
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [nameValue, setNameValue] = useState('')
 
+       
     useEffect(()=>{
-            let tempArray = props.dataArray
-            for(let cellData in tempArray){
-                if(cellData.key === props.id){
-                    cellData.name = nameValue
-                }
-                else{return}
-            }
-            props.setDataArray(tempArray)
-        
+    
+       for(let cellData of props.dataArray.current){
+        if(cellData.id === props.id){
+            cellData.name = nameValue
+        }
+       }
 
-        
-    },[hasBeenSubmitted])
+
 
        
-    
+       
+    },[hasBeenSubmitted])
     
     
     function submitCellData (event){
@@ -60,10 +58,17 @@ function AnswerCell(props) {
     const [hintValue, setHintValue] = useState('')
     
     useEffect(()=>{
+        
+        for(let cellData of props.dataArray.current){
+         if(cellData.id === props.id){
+             cellData.answer = answerValue
+             cellData.hint = hintValue
+         }
+        }
 
-        props.answerCellUpdatesDataArray(props.id,answerValue, hintValue)
+        
+     },[hasBeenSubmitted])
 
-    },[hasBeenSubmitted])
 
     function submitCellData (event){
         event.preventDefault()
@@ -85,6 +90,7 @@ function AnswerCell(props) {
         )
     }
     else {
+
         return (
             <div className="grid-cell div-cell">
                 <div>* {hintValue} *</div>

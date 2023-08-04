@@ -6,23 +6,7 @@ import uniqid from 'uniqid'
 
  function DynamicGrid(props){
     const [cellArray, setCellArray] = useState([])
-
-    
-
-    function answerCellUpdatesDataArray(key, answerValue, hintValue){
-        let tempArray = dataArray
-            for(let cellData in tempArray){
-                if(cellData.key === key){
-                    cellData.answer = answerValue
-                    cellData.hint = hintValue
-                }
-                else{return}
-            }
-    }
-
-
-
-    
+    const dataArray = useRef([])
     const {chosenCellsPerSide, hasHappenedOnce} = props
 
     useEffect(() => {
@@ -35,10 +19,21 @@ import uniqid from 'uniqid'
 
             const getGridCells = (cellsPerSide) => {
                 let tempCellArray = []
+    
                 for(let i=1; i <= cellsPerSide ** 2; i++){
                     let nameCellUniqid = uniqid()
                     let answerCellUniqid = uniqid()
-                    tempCellArray.push(<NameCell key={nameCellUniqid} id={nameCellUniqid}  dataArray={dataArray} setDataArray={setDataArray}  />, <AnswerCell key={answerCellUniqid} id={answerCellUniqid} dataArray={dataArray} answerCellUpdatesDataArray={answerCellUpdatesDataArray} />)
+                    let nameCellData = {
+                        id: nameCellUniqid,
+                        name: ''
+                    }
+                    let answerCellData = {
+                        id: answerCellUniqid,
+                        answer: '',
+                        hint: ''
+                    }
+                    tempCellArray.push(<NameCell key={nameCellUniqid} id={nameCellUniqid}  dataArray={dataArray} />, <AnswerCell key={answerCellUniqid} id={answerCellUniqid} dataArray={dataArray}/>)
+                    dataArray.current.push(nameCellData, answerCellData)
                 }
                 setCellArray(tempCellArray)
                 
