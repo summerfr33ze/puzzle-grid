@@ -5,6 +5,8 @@ import '../App.css'
 
 function Home (props) {
 
+    
+
     const navigate = useNavigate()
 
     const navigateToMiscellaneous = () => {

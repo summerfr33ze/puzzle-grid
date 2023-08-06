@@ -23,7 +23,7 @@ function Create(props){
         setChosenColorOne(colorOne.current.value)
         setChosenColorTwo(colorTwo.current.value)
         setChosenCellsPerSide(cellsPerSide.current.value)
-        sethasBeenSubmitted(true)
+        setHasBeenSubmitted(true)
         
         
     }
