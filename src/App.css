@@ -68,6 +68,10 @@ html, body, #root {
     font-size: .8rem;
 }
 
+.grid-form input{
+    width: 20vw;
+}
+
 .div-cell {
     display: flex;
     flex-direction: column;
@@ -83,19 +87,30 @@ html, body, #root {
     font-size: 2rem;
 }
 
+
+
 .color-container {
     display:flex;
-    gap: 3vw;
+    gap: 10px;
 }
 
 
 
+.form-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .grid-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    gap: 5px;
     font-size: 20px;
+    width: 35vw;
+    
+    
 }
 
 .btn-container {
@@ -103,6 +118,11 @@ html, body, #root {
     gap: 50px;
 }
 
+.grid-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 

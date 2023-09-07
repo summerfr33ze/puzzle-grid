@@ -11,26 +11,28 @@ function NameCell(props){
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [nameValue, setNameValue] = useState('')
 
-       
-    useEffect(()=>{
     
-       for(let cellData of props.dataArray.current){
-        if(cellData.id === props.id){
-            cellData.name = nameValue
-        }
-       }
-
-
 
        
-       
-    },[hasBeenSubmitted])
-    
-    
     function submitCellData (event){
         event.preventDefault()
         setHasBeenSubmitted(true)
+
+        
+        let tempDataArray = props.dataArray.current
+        console.log(tempDataArray)
+        for(let cellData of tempDataArray){
+        if(cellData.id === props.id){
+        cellData.name = nameValue
+        }
+        }
+       
+
+    props.dataArray.current = tempDataArray
+        
     }
+    
+    
 
         if (!hasBeenSubmitted){
         return (
@@ -57,31 +59,33 @@ function AnswerCell(props) {
     const [answerValue, setAnswerValue] = useState('')
     const [hintValue, setHintValue] = useState('')
     
-    useEffect(()=>{
-        
-        for(let cellData of props.dataArray.current){
-         if(cellData.id === props.id){
-             cellData.answer = answerValue
-             cellData.hint = hintValue
-         }
-        }
-
-        
-     },[hasBeenSubmitted])
-
-
+    
     function submitCellData (event){
         event.preventDefault()
         setHasBeenSubmitted(true)
-    }
 
+        
+        let tempDataArray = props.dataArray.current
+        console.log(tempDataArray)
+        for(let cellData of tempDataArray){
+        if(cellData.id === props.id){
+        cellData.answer = answerValue
+        cellData.hint = hintValue
+        }
+
+       
+
+        props.dataArray.current = tempDataArray
+        
+    }
+}
     
     if(!hasBeenSubmitted){
         return (
         
                 <Form  className="grid-cell" onSubmit={(event) => submitCellData(event)}>
                 <Form.Label htmlFor="answer" >Answer</Form.Label>
-                <Form.Control name="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
+                <Form.Control name="answer" className="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
                 <Form.Label htmlFor="hint">Hint</Form.Label>
                 <Form.Control name="hint" size="sm" onChange={(event) => {setHintValue(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>

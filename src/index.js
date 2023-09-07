@@ -4,7 +4,6 @@ import './index.css';
 import './App.css'
 import Home from './components/Home'
 import Create from './components/Create'
-import Login from './components/Login'
 import Signup from './components/Signup'
 import { Genres, Sports, Miscellaneous, TVandMovies, Numbers, Literature } from './components/Genres'
 import {
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-  },
-  {
-    path: "/login",
-    element: <Login />
   },
   {
     path: "/signup",
