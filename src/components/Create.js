@@ -22,6 +22,7 @@ function Create(props){
     const description = useRef(null)
     const playTime = useRef(null)
     const genre = useRef(null)
+    const featured = useState(false)
 
     function generateGrid(event){
         event.preventDefault()
@@ -61,11 +62,11 @@ function Create(props){
 
         <Form.Label htmlFor="genre">Genre</Form.Label>
         <Form.Select name="genre" className="create-page-input" size="sm" ref={genre}>
-            <option value="ObjectId('64eece4f4e6db924320059f6')">Sports</option>
-            <option value="ObjectId('64eecf1e4e6db924320059f7')">TV and Movies</option>
-            <option value="ObjectId('64eed04d4e6db924320059f8')">Numbers</option>
-            <option value="ObjectId('64eed10c4e6db924320059f9')">Literature</option>
-            <option value="ObjectId('64eed17e4e6db924320059fa')">Miscellaneous</option>
+            <option value="64eece4f4e6db924320059f6">Sports</option>
+            <option value="64eecf1e4e6db924320059f7">TV and Movies</option>
+            <option value="64eed04d4e6db924320059f8">Numbers</option>
+            <option value="64eed10c4e6db924320059f9">Literature</option>
+            <option value="64eed17e4e6db924320059fa">Miscellaneous</option>
         </Form.Select>
 
         <Form.Label htmlFor="cells-per-side">How many cells per side?</Form.Label>
@@ -94,7 +95,7 @@ function Create(props){
     )
     }
     else {
-        return <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} />
+        return <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}/>
     }
 
 

@@ -8,7 +8,7 @@ import uniqid from 'uniqid'
     const [cellArray, setCellArray] = useState([])
     // const [dataArray, setDataArray] = useState([])
     const dataArray = useRef(null)
-    const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre} = props
+    const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre, colorOne, colorTwo} = props
 
     const submitPuzzle = async (req,res) => {
         let count = 0
@@ -35,7 +35,10 @@ import uniqid from 'uniqid'
                 genre: genre,
                 play_time: playTime,
                 cells_per_side: chosenCellsPerSide,
-                data_array: dataArray.current
+                data_array: dataArray.current,
+                colorOne: colorOne,
+                colorTwo: colorTwo,
+                featured: false
             }
 
             console.log(puzzleData)
@@ -49,7 +52,7 @@ import uniqid from 'uniqid'
             })
                 
             
-            
+            res.send("posted.")
             
         }
         catch (error) {
