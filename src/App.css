@@ -142,3 +142,13 @@ html, body, #root {
     align-items: center;
 }
 
+.genre-container {
+    margin: 100px;
+}
+
+.puzzle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
