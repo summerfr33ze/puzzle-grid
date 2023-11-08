@@ -53,7 +53,7 @@ import uniqid from 'uniqid'
             })
                 
             
-            res.send("posted.")
+            
             
         }
         catch (error) {
