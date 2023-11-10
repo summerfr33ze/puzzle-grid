@@ -9,7 +9,7 @@ html, body, #root {
 
 
 .header {
-    height: 10vh;
+    height: 9vh;
     font-size: 3rem;
     background-color: rgb(31, 31, 31);
     display: flex;
@@ -19,19 +19,21 @@ html, body, #root {
 
 .genres {
     display: flex;
-    gap: 1vh;
+    gap: 1.2vh;
 }
 
 
 .green-txt-btn, .purple-txt-btn {
     background-color:black;
-    height: 8vh;
-    font-size: 1.4rem;
+    height: 7vh;
+    font-size: 2.0rem;
     font-weight: bold;
     border: none;
     color: #00FA9A;
     border-radius: 4px;
     text-align: center;
+    text-decoration: none;
+    padding: 0px 0px 0px 0px;
 
 }
 

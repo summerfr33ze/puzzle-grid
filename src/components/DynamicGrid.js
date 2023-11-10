@@ -46,12 +46,16 @@ import uniqid from 'uniqid'
             console.log("on count")
             const response = await fetch("http://localhost:3000/create", {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     "content-type": "application/json"
                 },
                 body: JSON.stringify(puzzleData)
-            })
                 
+            })
+            .then(response => response.json()) 
+            .then(json => console.log(json));
+
             
             
             

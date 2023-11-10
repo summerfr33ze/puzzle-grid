@@ -1,34 +1,9 @@
-import {useNavigate, Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 
 
 function Header(props){
-    const navigate = useNavigate()
-
-    const navigateToMiscellaneous = () => {
-        navigate('genres/miscellaneous')
-        
-    }
-
-    const navigateToSports = () => {
-        navigate('genres/sports')
-    }
-
-    const navigateToNumbers = () => {
-        navigate('genres/numbers')
-    }
-
-    const navigateToTVandMovies = () => {
-        navigate('genres/tv-and-movies')
-    }
-
-    const navigateToLiterature = () => {
-        navigate('genres/literature')
-    }
-
-    const navigateToCreate = () => {
-        navigate('create')
-    }
+    
     
     return (
         <div className="header">
@@ -37,14 +12,22 @@ function Header(props){
                     <div className="title"><span className="title-span">Puzzle</span> Grid</div>
                 </div>
                 <div className="genres">
-                    <button className="green-txt-btn" onClick={navigateToMiscellaneous}>Miscellaneous</button>
-                    <button className="green-txt-btn" onClick={navigateToSports}>Sports</button>
-                    <button className="green-txt-btn" onClick={navigateToNumbers}>Numbers</button>
-                    <button className="green-txt-btn" onClick={navigateToTVandMovies}>TV and Movies</button>
-                    <button className="green-txt-btn" onClick={navigateToLiterature}>Literature</button>
+                
+                    
+                    <Link className="green-txt-btn" to="/genres/miscellaneous">Miscellaneous</Link>
+                    
+                    <Link className="green-txt-btn" to="/genres/sports">Sports</Link>
+                   
+                    <Link className="green-txt-btn" to="/genres/tv-and-movies">TV and Movies</Link>
+                   
+                    <Link className="green-txt-btn" to="/genres/numbers">Numbers</Link>
+                   
+                    <Link className="green-txt-btn" to="/genres/literature">Literature</Link>
+
                 </div>
+                    
                 <div className="header-right">
-                    <button className="green-txt-btn" onClick={navigateToCreate}>Create</button>
+                    <Link className="green-txt-btn" to="/create">Create</Link>
                     <div className="user">{}</div>
                     <img className="user-icon"></img>
                 </div>
