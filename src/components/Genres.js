@@ -23,57 +23,27 @@ function Genres (props) {
 
 function Sports (props) {
     
-    const [sportsPuzzles, setSportsPuzzles] = useState([])
-
-    
-
-    useEffect(() => {
-        const getPuzzles = async () => {
-            const response = await fetch("http://localhost:3000/genres/sports")
-            setSportsPuzzles(await response.json())
-        }
-
-        getPuzzles()
-        
-    }, [])
-
     return(
-        <div >
-        <Header />
-        
-        <div className="genre-container">{sportsPuzzles.map((puzzle) => {
-            return (
-                <Card key={uniqid()} style={{width: '10rem'}} className="puzzle-card">
-                <Card.Img variant="top" src="" />
-                        <Card.Body>
-                            <Card.Title>{puzzle.title}</Card.Title>
-                                <Card.Text>{puzzle.genre.title}</Card.Text>
-                                <Card.Text>{puzzle.description}</Card.Text>
-                                <Button className="navigate-button" >Play</Button>
-                                </Card.Body>
-            </Card>
-            )
-        })}</div>
-        </div>
-
+        <FeaturedPuzzles type="sports"></FeaturedPuzzles>
     )
+
 }
 
 function TVandMovies (props) {
     return(
-    <FeaturedPuzzles type="TVandMovies"></FeaturedPuzzles>
+    <FeaturedPuzzles type="tv-and-movies"></FeaturedPuzzles>
     )
 }
 
 function Numbers (props) {
     return(
-    <FeaturedPuzzles type="Numbers"></FeaturedPuzzles>
+    <FeaturedPuzzles type="numbers"></FeaturedPuzzles>
     )
 }
 
 function Literature (props) {
     return (
-    <FeaturedPuzzles type="Literature"></FeaturedPuzzles>
+    <FeaturedPuzzles type="literature"></FeaturedPuzzles>
     )
 }
 
