@@ -8,11 +8,12 @@ import Header from './Header'
 
 function Genres (props) {
     return(
-        
-    <div> 
-        <Outlet/>
+    <div>
+        <Header />    
+        <div> 
+            <Outlet/>
+        </div>
     </div>
-    
     )
     
     

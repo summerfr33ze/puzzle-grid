@@ -13,7 +13,7 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-
+import Puzzle from './components/Puzzle'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
     element: <Signup />
   },
   {
+    path: "/create",
+    element: <Create />
+  },
+  {
     path: "/genres",
     element: <Genres />,
     children: [
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
       path: "sports",
-      element: <Sports />
+      element: <Sports />,
       },
       {
       path: "tv-and-movies",
@@ -53,9 +57,12 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/create",
-    element: <Create />
+    path: "/genres/:genreId/puzzles/:puzzleId",
+    element: <Puzzle />
   }
+ 
+  
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

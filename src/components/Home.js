@@ -17,7 +17,7 @@ function Home (props) {
             <Header className="header"/>
             <div className="main">
                 
-                <FeaturedPuzzles type="home"/>
+                <FeaturedPuzzles type="all"/>
                 
             </div>
             <div className="footer"></div>

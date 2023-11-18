@@ -1,13 +1,17 @@
-import {Card} from "react-bootstrap"
+
 import {useState, useRef, useEffect} from 'react'
-import {Button} from 'react-bootstrap'
+import {useNavigate} from 'react-router-dom'
+import {Card, Button} from 'react-bootstrap'
+import uniqid from 'uniqid'
+import Link from 'react-router-dom'
 
  function FeaturedPuzzles (props){
 
     const [currentPuzzles, setCurrentPuzzles] = useState([])
+    const navigate = useNavigate()
+    
+    
 
-    
-    
 
     useEffect(() => {
         const getPuzzles = async () => {
@@ -23,9 +27,14 @@ import {Button} from 'react-bootstrap'
 
     return(
         <div >
-        <Header />
         
-        <div className="genre-container">{currentPuzzles.map((puzzle) => {
+        
+        <div className="genre-container">{
+        
+            currentPuzzles.map((puzzle) => {
+            let puzzleId = puzzle._id
+            const navigateToPuzzle = () => navigate(`puzzles/${puzzleId}`)
+            
             return (
                 <Card key={uniqid()} style={{width: '10rem'}} className="puzzle-card">
                 <Card.Img variant="top" src="" />
@@ -33,7 +42,7 @@ import {Button} from 'react-bootstrap'
                             <Card.Title>{puzzle.title}</Card.Title>
                                 <Card.Text>{puzzle.genre.title}</Card.Text>
                                 <Card.Text>{puzzle.description}</Card.Text>
-                                <Button className="navigate-button" >Play</Button>
+                                <Button onClick={navigateToPuzzle}>Play</Button>
                                 </Card.Body>
             </Card>
             )
