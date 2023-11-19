@@ -105,7 +105,50 @@ function AnswerCell(props) {
         
 }
 
-export {NameCell, AnswerCell}
+function PlayerNameCell(props) {
+    return (
+        <div className="grid-cell div-cell">
+            <div>{props.name}</div>
+        </div>
+        )
+}
+
+function PlayerAnswerCell(props) {
+    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
+    const [answerValue, setAnswerValue] = useState('')
+
+    function submitAnswerData(event){
+        event.preventDefault()
+        setHasHappened(true)
+
+    }
+
+    if(!hasBeenSubmitted){
+        return (
+            <div>
+                <Form  className="grid-cell" onSubmit={(event) => submitAnswerData(event)}>
+                <Form.Control name="answer" className="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
+                <button type="submit" hidden></button>
+                </Form>
+                <div>{props.hint}</div>
+            </div>  
+        )
+    }
+    else {
+
+        return (
+            <div className="grid-cell div-cell">
+                <div>* {props.answer} *</div>
+                <div>{props.hint}</div>
+                
+            </div>
+        )
+    }
+}
+
+
+
+export {NameCell, AnswerCell, PlayerNameCell, PlayerAnswerCell}
 
 
 

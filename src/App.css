@@ -155,6 +155,23 @@ html, body, #root {
     margin: 20px;
 }
 
-.navigate-button {
-    
+.puzzle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10vh;
 }
+
+.puzzle-title {
+    margin-top: 8vh;
+    font-size: 2.5rem;
+}
+
+.puzzle-grid {
+    display: grid;
+}
+
+.description {
+    font-size: 2rem;
+}
+
