@@ -37,8 +37,8 @@ import uniqid from 'uniqid'
                 play_time: playTime,
                 cells_per_side: chosenCellsPerSide,
                 data_array: dataArray.current,
-                colorOne: colorOne,
-                colorTwo: colorTwo,
+                color_one: colorOne,
+                color_two: colorTwo,
                 featured: false
             }
 

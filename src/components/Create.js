@@ -6,9 +6,7 @@ import {NameCell, AnswerCell} from './Cell'
 
 function Create(props){
 
-    const cellsPerSide = useRef(null)
-    const colorOne = useRef(null)
-    const colorTwo = useRef(null)
+    
     const [chosenColorOne, setChosenColorOne] = useState("")
     const [chosenColorTwo, setChosenColorTwo] = useState("")
     const [chosenCellsPerSide, setChosenCellsPerSide] = useState(0)
@@ -16,6 +14,9 @@ function Create(props){
     const [chosenDescription, setChosenDescription] = useState('')
     const [chosenPlayTime, setChosenPlayTime] = useState('')
     const [chosenGenre, setChosenGenre] = useState('')
+    const cellsPerSide = useRef(null)
+    const colorOne = useRef(null)
+    const colorTwo = useRef(null)
     const hasHappenedOnce = useRef(false)
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const title = useRef(null)
@@ -73,13 +74,14 @@ function Create(props){
         <Form.Control type="number" name="cells-per-side"  ref={cellsPerSide} className="create-page-input"></Form.Control>
 
         <Form.Group className="color-container">
-        <Form.Label htmlFor="color-one">Choose Two Colors For Your Puzzle</Form.Label>
+        <Form.Label htmlFor="color-one">Choose Two Colors For Your Puzzle, One Light And Then One Dark</Form.Label>
         <Form.Control type="color" style={{width: "100px", border: "none"}} className="choose-color" name="color-one" ref={colorOne}  defaultValue="#7B68EE" />
         <Form.Control type="color" className="choose-color" ref={colorTwo} style={{width: "100px", border: "none"}} defaultValue="#00FA9A"/>
         </Form.Group>
 
-        <Form.Label htmlFor="play-time">How much time does the user have to play? Enter 0 if unlimited</Form.Label>
+        <Form.Label htmlFor="play-time">How many minutes does the user have to play?</Form.Label>
         <Form.Control type="number" name="play-time"  ref={playTime}></Form.Control>
+
         
 
         

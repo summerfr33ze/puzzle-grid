@@ -175,3 +175,14 @@ html, body, #root {
     font-size: 2rem;
 }
 
+.timer {
+    position:absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 5vh;
+}
+
+.name-cell {
+    color: white;
+    background-color:black;
+}

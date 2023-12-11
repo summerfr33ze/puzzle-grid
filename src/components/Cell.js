@@ -107,8 +107,8 @@ function AnswerCell(props) {
 
 function PlayerNameCell(props) {
     return (
-        <div className="grid-cell div-cell">
-            <div>{props.name}</div>
+        <div className="grid-cell div-cell name-cell">
+            {props.name}
         </div>
         )
 }
@@ -116,33 +116,56 @@ function PlayerNameCell(props) {
 function PlayerAnswerCell(props) {
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [answerValue, setAnswerValue] = useState('')
+    const [hasBeenClicked, setHasBeenClicked] = useState(false)
+    const [colorOne, setColorOne] = useState(props.color_one)
+    const [colorTwo, setColorTwo] = useState(props.color_two)
+    const changeColor = () => {
+        setColorOne(props.color_two)
+        setColorTwo(props.color_one)
+    }
 
     function submitAnswerData(event){
         event.preventDefault()
-        setHasHappened(true)
+        setHasBeenSubmitted(true)
 
     }
 
     if(!hasBeenSubmitted){
         return (
-            <div>
-                <Form  className="grid-cell" onSubmit={(event) => submitAnswerData(event)}>
+            
+                <Form  className="grid-cell" style={{backgroundColor: colorOne}} onSubmit={(event) => submitAnswerData(event)}>
                 <Form.Control name="answer" className="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>
                 </Form>
-                <div>{props.hint}</div>
-            </div>  
+            
         )
     }
     else {
+        if (answerValue === props.answer && props.is_playing){
+            return (
+                <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }} onClick={changeColor}>
+                    <div >* {props.answer} *</div>
+                    <div>{props.hint}</div>
+                    
+                </div>
+            )
+        }
 
-        return (
-            <div className="grid-cell div-cell">
-                <div>* {props.answer} *</div>
-                <div>{props.hint}</div>
-                
-            </div>
-        )
+        else if (!props.is_playing){
+            return (
+                <div className="grid-cell div-cell">
+                    <div>Press Play To Start!</div>
+                </div>
+            )
+        }
+        
+        else {
+            return (
+                <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }}>
+                    <div>Wrong Answer!</div>
+                </div>
+            )
+        }
     }
 }
 
