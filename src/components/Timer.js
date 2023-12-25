@@ -23,7 +23,6 @@ function Timer (props){
         }
         
         if (hasBeenClicked) {
-            console.log("yo")
             const interval = setInterval(() => {
 
                 if (mins === 0 && secs === 0){

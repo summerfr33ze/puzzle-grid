@@ -114,22 +114,43 @@ function PlayerNameCell(props) {
 }
 
 function PlayerAnswerCell(props) {
+    
+    
+    const isPlaying = props.is_playing
+    const isEnded = props.is_ended
+    const endGame = props.end_game
+    const hasBeenClicked = props.has_been_clicked
+    const answer = props.answer
+    const hint = props.hint
+    
+
+
+    const changeColor = () => {
+        setColorOne(colorTwo)
+        setColorTwo(colorOne)
+    }
+
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [answerValue, setAnswerValue] = useState('')
-    const [hasBeenClicked, setHasBeenClicked] = useState(false)
     const [colorOne, setColorOne] = useState(props.color_one)
     const [colorTwo, setColorTwo] = useState(props.color_two)
-    const changeColor = () => {
-        setColorOne(props.color_two)
-        setColorTwo(props.color_one)
-    }
+    const hasRanOnce = useRef(false)
+
+    
 
     function submitAnswerData(event){
         event.preventDefault()
         setHasBeenSubmitted(true)
 
+        if(answerValue !== answer){
+            endGame()
+        }
     }
 
+    
+
+    
+    
     if(!hasBeenSubmitted){
         return (
             
@@ -141,17 +162,18 @@ function PlayerAnswerCell(props) {
         )
     }
     else {
-        if (answerValue === props.answer && props.is_playing){
+        if (answerValue === answer && hasBeenClicked){
+           
             return (
                 <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }} onClick={changeColor}>
-                    <div >* {props.answer} *</div>
-                    <div>{props.hint}</div>
+                    <div >* {answer} *</div>
+                    <div>{hint}</div>
                     
                 </div>
             )
         }
 
-        else if (!props.is_playing){
+        else if (!hasBeenClicked){
             return (
                 <div className="grid-cell div-cell">
                     <div>Press Play To Start!</div>
@@ -159,13 +181,6 @@ function PlayerAnswerCell(props) {
             )
         }
         
-        else {
-            return (
-                <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }}>
-                    <div>Wrong Answer!</div>
-                </div>
-            )
-        }
     }
 }
 
