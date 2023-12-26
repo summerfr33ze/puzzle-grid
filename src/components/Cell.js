@@ -147,17 +147,18 @@ function PlayerAnswerCell(props) {
         }
     }
 
-    
 
     
     
     if(!hasBeenSubmitted){
         return (
-            
-                <Form  className="grid-cell" style={{backgroundColor: colorOne}} onSubmit={(event) => submitAnswerData(event)}>
+                
+                    <Form style={{backgroundColor: colorOne}}  className="grid-cell" onSubmit={(event) => submitAnswerData(event)}>
                 <Form.Control name="answer" className="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>
                 </Form>
+
+                
             
         )
     }

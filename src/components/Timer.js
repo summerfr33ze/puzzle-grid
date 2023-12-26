@@ -50,10 +50,11 @@ function Timer (props){
     }, [secs, isPlaying])
 
     return (
-        <div>
-            <span>{mins + "min"}</span>:<span>{secs + "sec"} </span>
+        <div className="timer">
+            <span>{mins + " mins"} </span>:<span>{secs + " secs"} </span>
         </div>
     )
 }
 
 export default Timer
+

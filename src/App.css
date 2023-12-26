@@ -3,13 +3,18 @@
     src: url("./fonts/Lilita.ttf")
 }
 
+@font-face {
+    font-family: Digital;
+    src: url("./fonts/digital.ttf")
+}
+
 html, body, #root {
     height: 100%;
 }
 
 
 .header {
-    height: 9vh;
+    height: 6vh;
     font-size: 3rem;
     background-color: rgb(31, 31, 31);
     display: flex;
@@ -19,13 +24,13 @@ html, body, #root {
 
 .genres {
     display: flex;
-    gap: 1.2vh;
+    gap: 2vh;
 }
 
 
 .green-txt-btn, .purple-txt-btn {
     background-color:black;
-    height: 7vh;
+    height: 5vh;
     font-size: 2.0rem;
     font-weight: bold;
     border: none;
@@ -33,7 +38,7 @@ html, body, #root {
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 5px 0px 5px;
 
 }
 
@@ -79,6 +84,8 @@ html, body, #root {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    font-size: 1.5rem;
+    font-family: Lilita
 }
 
 .wrong-answer {
@@ -154,34 +161,62 @@ html, body, #root {
 }
 
 .genre-container {
-    margin: 100px;
+    height: 100%;
+    display: flex;
+    
+    
+}
+
+.genre-page {
+    background-color:#7B68EE;
+    height: 100vh;
+    
+    
+}
+
+.genre-title {
+    font-family: Lilita;
+    font-size: 50px;
+    text-align: center;
 }
 
 .puzzle-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 20px;
+    
+    
 }
 
 .puzzle {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10vh;
+    gap: 2vh;
 }
 
 .puzzle-title {
     margin-top: 8vh;
     font-size: 2.5rem;
+    background-color: black;
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-family: Lilita;
+    
 }
 
 .puzzle-grid {
     display: grid;
+
+    width: 150vh;
+    height: 60vh;
+    
 }
 
 .description {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-family: Lilita;
 }
 
 .timer {
@@ -189,9 +224,26 @@ html, body, #root {
     right: 30px;
     top: 20px;
     font-size: 5vh;
+    padding: 0px 5px 0px 5px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    padding-bottom: 5px;
+    font-family: Lilita;
 }
 
 .name-cell {
     color: white;
     background-color:black;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    font-size: 2rem;
+    background-color: rgb(31, 31, 31);
+    color:#00FA9A;
+    text-align: center;
 }

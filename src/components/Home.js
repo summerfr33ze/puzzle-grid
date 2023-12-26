@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react"
 import FeaturedPuzzles from "./FeaturedPuzzles"
 import '../App.css'
 import Header from './Header'
+import Footer from './Footer'
 
 function Home (props) {
 
@@ -20,7 +21,7 @@ function Home (props) {
                 <FeaturedPuzzles type="all"/>
                 
             </div>
-            <div className="footer"></div>
+            <Footer />
         </div>
     )
 }

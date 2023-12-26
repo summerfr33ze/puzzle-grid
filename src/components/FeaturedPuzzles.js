@@ -9,6 +9,11 @@ import Link from 'react-router-dom'
 
     const [currentPuzzles, setCurrentPuzzles] = useState([])
     const navigate = useNavigate()
+
+    // capitalize first letter of genre to display on title
+    const firstLetter = props.type.charAt(0)
+    const capFirstLetter = firstLetter.toUpperCase()
+    const capitalized = capFirstLetter + props.type.slice(1)
     
     
 
@@ -26,7 +31,10 @@ import Link from 'react-router-dom'
     }, [])
 
     return(
-        <div >
+        <div>
+
+        
+        <div class="genre-title">{capitalized + " Puzzles" }</div>
         
         
         <div className="genre-container">{
@@ -36,13 +44,13 @@ import Link from 'react-router-dom'
             const navigateToPuzzle = () => navigate(`puzzles/${puzzleId}`)
             
             return (
-                <Card key={uniqid()} style={{width: '10rem'}} className="puzzle-card">
+                <Card key={uniqid()} className="puzzle-card">
                 <Card.Img variant="top" src="" />
                         <Card.Body>
                             <Card.Title>{puzzle.title}</Card.Title>
                                 <Card.Text>{puzzle.genre.title}</Card.Text>
                                 <Card.Text>{puzzle.description}</Card.Text>
-                                <Button onClick={navigateToPuzzle}>Play</Button>
+                                <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
                                 </Card.Body>
             </Card>
             )

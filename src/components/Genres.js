@@ -8,7 +8,7 @@ import Header from './Header'
 
 function Genres (props) {
     return(
-    <div>
+    <div className="genre-page">
         <Header />    
         <div> 
             <Outlet/>

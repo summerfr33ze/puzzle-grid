@@ -56,30 +56,32 @@ function Puzzle (props){
 
     return (
         <div>
-            <div className="timer">
-                <Timer time={puzzle.play_time} is_playing={isPlaying} puzzleId={puzzleId} has_been_clicked={hasBeenClicked.current} />
-            </div>
+            
+            <Timer  time={puzzle.play_time} is_playing={isPlaying} puzzleId={puzzleId} has_been_clicked={hasBeenClicked.current} />
+            
             
             
             <div className="puzzle">
                 
-                <div className="puzzle-title">{puzzle.title}</div>
-                <Button onClick={startGame}>Play</Button>
+                <div className="puzzle-title" style={{ color: puzzle.colorTwo}}>{puzzle.title}</div>
+                <Button size="lg" onClick={startGame} style={{backgroundColor: 'black', color: puzzle.colorTwo}} >Play</Button>
                 <div className="puzzle-grid" style={{gridTemplateColumns: `repeat(${puzzle.cells_per_side}, 1fr 2fr)`, gridTemplateRows: `repeat(${puzzle.cells_per_side}, 1fr)`}}>{
 
                     puzzle.data_array?.map((cellData, i)=> {
                         
                         let uniqId = uniqid()
+                        let currentPuzzle = puzzle
                         if(cellData.name){
                             return <PlayerNameCell key={uniqId} id={i} name={cellData.name}/>
                         }
                         else {
-                            return <PlayerAnswerCell key={uniqId} id={i} hint={cellData.hint} answer={cellData.answer} color_one={puzzle.color_one} color_two={puzzle.color_two} is_playing={isPlaying} end_game={endGame} is_ended={isEnded} has_been_clicked={hasBeenClicked.current}/>
+                            
+                            return <PlayerAnswerCell key={uniqId} id={i} hint={cellData.hint} answer={cellData.answer} color_one={puzzle.colorOne} color_two={puzzle.colorTwo} is_playing={isPlaying} end_game={endGame} is_ended={isEnded} has_been_clicked={hasBeenClicked.current}/>
                         }
                     })
                     
                 }</div>
-                <div className="description">{puzzle.description}</div>
+                <div className="description" >{puzzle.description}</div>
             </div>
         </div>
         
