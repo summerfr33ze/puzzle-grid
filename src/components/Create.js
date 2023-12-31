@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react'
 import {Form} from 'react-bootstrap'
-import DynamicGrid from './DynamicGrid'
+import TestDynamicGrid from './TestDynamicGrid'
 import uniqid from 'uniqid'
 import {NameCell, AnswerCell} from './Cell'
 
@@ -97,7 +97,7 @@ function Create(props){
     )
     }
     else {
-        return <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}/>
+        return <TestDynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}/>
     }
 
 

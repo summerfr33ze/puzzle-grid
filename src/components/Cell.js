@@ -19,8 +19,8 @@ function NameCell(props){
         setHasBeenSubmitted(true)
 
         
-        let tempDataArray = props.dataArray.current
-        console.log(tempDataArray)
+        let tempDataArray = props.dataArray
+        // console.log(tempDataArray)
         for(let cellData of tempDataArray){
         if(cellData.id === props.id){
         cellData.name = nameValue
@@ -28,7 +28,7 @@ function NameCell(props){
         }
        
 
-    props.dataArray.current = tempDataArray
+    props.setDataArray(tempDataArray)
         
     }
     
@@ -65,8 +65,8 @@ function AnswerCell(props) {
         setHasBeenSubmitted(true)
 
         
-        let tempDataArray = props.dataArray.current
-        console.log(tempDataArray)
+        let tempDataArray = props.dataArray
+        // console.log(tempDataArray)
         for(let cellData of tempDataArray){
         if(cellData.id === props.id){
         cellData.answer = answerValue
@@ -75,7 +75,7 @@ function AnswerCell(props) {
 
        
 
-        props.dataArray.current = tempDataArray
+        props.setDataArray(tempDataArray)
         
     }
 }

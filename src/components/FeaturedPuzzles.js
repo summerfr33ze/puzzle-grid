@@ -34,7 +34,7 @@ import Link from 'react-router-dom'
         <div>
 
         
-        <div class="genre-title">{capitalized + " Puzzles" }</div>
+        <div className="genre-title">{capitalized + " Puzzles" }</div>
         
         
         <div className="genre-container">{

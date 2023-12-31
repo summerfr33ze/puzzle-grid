@@ -9,10 +9,29 @@ function LoginPopup() {
     const password = useRef(null)
 
 
-    function loginUser(){
-        const currentUsername = username.current.value
-        const currentPassword = password.current.value
+    async function loginUser(){
+        const user = {
+            username: username.current,
+            password: password.current
+        }
+
+        try {
+            const response = await fetch("http://localhost:3000/login",  {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            
+            })
+
+            const result = await response.json()
+        
     }
+    catch (error){
+        console.error(error)
+    }
+}
 
     return(
         <Popup trigger={<Button className="green-txt-btn">Login</Button>}>
@@ -22,11 +41,10 @@ function LoginPopup() {
             <Form.Label htmlFor="password">Password</Form.Label>
             <Form.Control type="password" name="password" ref={password}></Form.Control>
             <Button variant="secondary" className="login-form-button" onClick={(event) => {loginUser(event)}}>Log In</Button>
-        </Form>
-
+            </Form>
         </Popup>
         
     )
 }
 
-export default Login
+export default LoginPopup

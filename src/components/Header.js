@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom"
-
+import Popup from "./LoginPopup"
 
 
 function Header(props){
@@ -28,7 +28,7 @@ function Header(props){
                     
                 <div className="header-right">
                     <Link className="green-txt-btn" to="/create">Create</Link>
-                    <div className="user">{}</div>
+                    <LoginPopup></LoginPopup>
                     <img className="user-icon"></img>
                 </div>
         </div>
