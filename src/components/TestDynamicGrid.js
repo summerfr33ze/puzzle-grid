@@ -48,7 +48,8 @@ import uniqid from 'uniqid'
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    
                 },
                 body: JSON.stringify(puzzleData)
                 

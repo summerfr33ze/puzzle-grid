@@ -1,9 +1,12 @@
 import {Link} from "react-router-dom"
-import Popup from "./LoginPopup"
-
+import LoginPopup from "./LoginPopup"
+import UsernamePopup from './UsernamePopup'
+import {useState} from 'react'
 
 function Header(props){
-    
+    const [currentUsername, setCurrentUsername] = useState('ello')
+    const [usernameDisplay, setUsernameDisplay] = useState({display: "none"})
+    const [loginDisplay, setLoginDisplay] = useState({display: "block"})
     
     return (
         <div className="header">
@@ -28,8 +31,8 @@ function Header(props){
                     
                 <div className="header-right">
                     <Link className="green-txt-btn" to="/create">Create</Link>
-                    <LoginPopup></LoginPopup>
-                    <img className="user-icon"></img>
+                    <LoginPopup setCurrentUsername={setCurrentUsername} loginDisplay={loginDisplay}  setLoginDisplay={setLoginDisplay} setUsernameDisplay= {setUsernameDisplay}></LoginPopup>
+                    <UsernamePopup currentUsername={currentUsername}  usernameDisplay={usernameDisplay} setLoginDisplay={setLoginDisplay} setUsernameDisplay= {setUsernameDisplay}/>
                 </div>
         </div>
     )

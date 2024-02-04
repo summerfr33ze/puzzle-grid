@@ -44,7 +44,7 @@ import Link from 'react-router-dom'
             const navigateToPuzzle = () => navigate(`puzzles/${puzzleId}`)
             
             return (
-                <Card key={uniqid()} className="puzzle-card">
+                <Card style={{border: "3px solid black"}} key={uniqid()} className="puzzle-card">
                 <Card.Img variant="top" src="" />
                         <Card.Body>
                             <Card.Title>{puzzle.title}</Card.Title>

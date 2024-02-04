@@ -67,6 +67,7 @@ html, body, #root {
 
 .header-right {
     display: flex;
+    gap: .8vw;
 }
 
 .grid-cell {
@@ -156,8 +157,22 @@ html, body, #root {
 
 .login-form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 1.5rem;
+    color: black;
+    background-color:#00FA9A;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 0px;
+    
+}
+
+.login-form-btn {
+    padding-bottom: 50px;
+    margin-top: 10px;
 }
 
 .genre-container {
@@ -205,6 +220,7 @@ html, body, #root {
     font-family: Lilita;
     
 }
+
 
 .puzzle-grid {
     display: grid;

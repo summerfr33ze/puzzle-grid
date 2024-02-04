@@ -14,7 +14,7 @@ function Home (props) {
     
 
     return (
-        <div>
+        <div className="genre-page">
             <Header className="header"/>
             <div className="main">
                 
