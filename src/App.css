@@ -42,6 +42,11 @@ html, body, #root {
 
 }
 
+.create-grid-button {
+    
+    margin-bottom: 10px;
+}
+
 .green-txt-btn:hover {
     color:  #7B68EE;
 }
@@ -120,17 +125,32 @@ html, body, #root {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 
 .grid-form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     font-size: 20px;
     width: 35vw;
+    margin-top: 3vh;
+
+}
+
+.grid-form > label, label[for="color-one"] {
+    
+    color:#7B68EE;
+    font-family: Lilita;
+    border-radius: 10px;
+    font-size: 3vh;
+    padding: 4px;
     
     
 }
+
+
+
 
 .btn-container {
     display: flex;
@@ -178,6 +198,7 @@ html, body, #root {
 .genre-container {
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     
     
 }
@@ -230,6 +251,9 @@ html, body, #root {
     
 }
 
+
+
+
 .description {
     font-size: 1.5rem;
     font-family: Lilita;
@@ -257,9 +281,11 @@ html, body, #root {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 5vh;
-    font-size: 2rem;
+    height: 6vh;
+    font-size: 3vh;
     background-color: rgb(31, 31, 31);
     color:#00FA9A;
     text-align: center;
+    padding: 10px;
+
 }

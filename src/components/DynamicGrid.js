@@ -6,15 +6,13 @@ import {NameCell, AnswerCell} from './Cell'
 import uniqid from 'uniqid'
 
  function DynamicGrid(props){
-    const [cellArray, setCellArray] = useState([])
-    // const [dataArray, setDataArray] = useState([])
-    const dataArray = useRef(null)
+    const [dataArray, setDataArray] = useState([])
     const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre, colorOne, colorTwo} = props
 
     const submitPuzzle = async (req,res) => {
         let count = 0
-        for (let cellData of dataArray.current){
-            console.log(cellData)
+        for (let cellData of dataArray){
+            
             for (let val in cellData){
                 if (val === ''){
                     console.log("no data")
@@ -28,6 +26,8 @@ import uniqid from 'uniqid'
             }
         }
 
+        
+
         if (count === chosenCellsPerSide^2*5)
         try {
             let puzzleData = {
@@ -36,25 +36,27 @@ import uniqid from 'uniqid'
                 genre: genre,
                 play_time: playTime,
                 cells_per_side: chosenCellsPerSide,
-                data_array: dataArray.current,
+                data_array: dataArray,
                 color_one: colorOne,
                 color_two: colorTwo,
                 featured: false
             }
 
             console.log(puzzleData)
-            console.log("on count")
+            const jwtToken = sessionStorage.getItem('jwtToken')
+            console.log(jwtToken)
             const response = await fetch("http://localhost:3000/create", {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    "authorization": `Bearer ${jwtToken}`
                 },
                 body: JSON.stringify(puzzleData)
                 
             })
-            .then(response => response.json()) 
-            .then(json => console.log(json));
+            .then(response => response.text()) 
+            .then(text => console.log(text));
 
             
             
@@ -73,8 +75,8 @@ import uniqid from 'uniqid'
             let cellsPerSide = chosenCellsPerSide
             
 
-            const getGridCells = (cellsPerSide) => {
-                let tempCellArray = []
+            const getGridData = (cellsPerSide) => {
+                
                 let tempDataArray = []
     
                 for(let i=1; i <= cellsPerSide ** 2; i++){
@@ -89,12 +91,11 @@ import uniqid from 'uniqid'
                         answer: '',
                         hint: ''
                     }
-                    tempCellArray.push(<NameCell key={nameCellUniqid} id={nameCellUniqid}  dataArray={dataArray}  />, <AnswerCell key={answerCellUniqid} id={answerCellUniqid} dataArray={dataArray}/>)
+                    
                     tempDataArray.push(nameCellData, answerCellData)
                 }
-                dataArray.current = tempDataArray
-                setCellArray(tempCellArray)
                 
+                setDataArray(tempDataArray)
                 
                 
                 
@@ -104,16 +105,29 @@ import uniqid from 'uniqid'
 
            
     
-        getGridCells(cellsPerSide)
+        getGridData(cellsPerSide)
         }
         
-        },[chosenCellsPerSide, cellArray, dataArray])
+        },[chosenCellsPerSide, dataArray])
 
         
     
         return (
             <div className="grid-container">
-                <div className="dynamic-grid" style={{gridTemplateColumns: `repeat(${chosenCellsPerSide}, 1fr 2fr)`, gridTemplateRows: `repeat(${chosenCellsPerSide}, 1fr)`}}>{cellArray}</div>
+                <div className="dynamic-grid" style={{gridTemplateColumns: `repeat(${chosenCellsPerSide}, 1fr 2fr)`, gridTemplateRows: `repeat(${chosenCellsPerSide}, 1fr)`}}>{
+                    dataArray?.map((cellData,i) => {
+                        // console.log(cellData)
+                        if(cellData.name === ""){
+
+                            
+                            return <NameCell key={cellData.id} id={cellData.id}  dataArray={dataArray} setDataArray={setDataArray}  />
+                        }
+                        else {
+                           return <AnswerCell key={cellData.id} id={cellData.id} dataArray={dataArray} setDataArray={setDataArray}/>
+                        }
+                        
+                    })
+                }</div>
                 <button className="green-txt-btn submit-btn" onClick={(event) => {submitPuzzle(event)}}>Submit Puzzle</button>
             </div>
             

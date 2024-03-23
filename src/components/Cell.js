@@ -147,7 +147,14 @@ function PlayerAnswerCell(props) {
         }
     }
 
-
+    if (isEnded){
+        
+        return (
+            <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }}>
+                <div>Play Again</div>
+            </div>
+        )
+    }
     
     
     if(!hasBeenSubmitted){
@@ -163,6 +170,8 @@ function PlayerAnswerCell(props) {
         )
     }
     else {
+
+        
         if (answerValue === answer && hasBeenClicked){
            
             return (
@@ -176,7 +185,7 @@ function PlayerAnswerCell(props) {
 
         else if (!hasBeenClicked){
             return (
-                <div className="grid-cell div-cell">
+                <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }}>
                     <div>Press Play To Start!</div>
                 </div>
             )

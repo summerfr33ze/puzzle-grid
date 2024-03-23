@@ -35,6 +35,8 @@ function LoginPopup(props) {
                     props.setCurrentUsername(username.current.value)
                     props.setLoginDisplay({display: "none"})
                     props.setUsernameDisplay({display: "block"})
+                    const jwtToken = token.jwt_token
+                    sessionStorage.setItem('jwtToken', jwtToken)
                 }
             })
             .then(console.log(props.loginDisplay))

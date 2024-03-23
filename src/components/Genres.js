@@ -5,6 +5,7 @@ import {Card, Button} from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import uniqid from 'uniqid'
 import Header from './Header'
+import Footer from './Footer'
 
 function Genres (props) {
     return(
@@ -13,6 +14,7 @@ function Genres (props) {
         <div> 
             <Outlet/>
         </div>
+        <Footer />
     </div>
     )
     

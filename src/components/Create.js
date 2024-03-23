@@ -1,8 +1,10 @@
 import {useEffect, useState, useRef} from 'react'
 import {Form} from 'react-bootstrap'
-import TestDynamicGrid from './TestDynamicGrid'
+import DynamicGrid from './DynamicGrid'
 import uniqid from 'uniqid'
 import {NameCell, AnswerCell} from './Cell'
+import Footer from './Footer'
+import Header from './Header'
 
 function Create(props){
 
@@ -47,15 +49,16 @@ function Create(props){
 
     if (hasBeenSubmitted === false){
     return (
+        <div>
 
-        
+        <Header />
 
         <div className="form-container">
-
+        
 
         <Form className="grid-form">
 
-        <Form.Label htmlFor="title">Puzzle Title</Form.Label>
+        <Form.Label htmlFor="title" >Puzzle Title</Form.Label>
         <Form.Control type="text" name="title"ref={title} className="create-page-input"></Form.Control>
 
         <Form.Label htmlFor="description">Description</Form.Label>
@@ -87,17 +90,24 @@ function Create(props){
         
         
         <div className="btn-container">
-        <button  className="green-txt-btn"  onClick={(event) => {generateGrid(event)}}>Create Grid</button>
+        <button  className="green-txt-btn create-grid-button"  onClick={(event) => {generateGrid(event)}}>Create Grid</button>
         </div>
     
         
         </Form>
+
+        
+
         </div>
+
+    <Footer />
+
+    </div>
     
     )
     }
     else {
-        return <TestDynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}/>
+        return <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}/>
     }
 
 

@@ -22,6 +22,7 @@ function Puzzle (props){
     const startGame = () => {
         console.log("hello")
          setIsPlaying(true)
+         
         hasBeenClicked.current = true
         
         
@@ -45,14 +46,7 @@ function Puzzle (props){
      
     }, [])
 
-    if(isEnded){
-        return (
-            <div className="wrong-answer">
-            You Failed!
-        </div>
-        
-        )
-    }
+    
 
     return (
         <div>
@@ -83,6 +77,8 @@ function Puzzle (props){
                 }</div>
                 <div className="description" >{puzzle.description}</div>
             </div>
+            
+            
         </div>
         
         
