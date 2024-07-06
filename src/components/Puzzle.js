@@ -52,7 +52,7 @@ function Puzzle (props){
     return (
         <div>
             
-            <Timer  time={puzzle.play_time} is_playing={isPlaying} puzzleId={puzzleId} has_been_clicked={hasBeenClicked.current} />
+            <Timer  time={puzzle.play_time} is_playing={isPlaying} puzzleId={puzzleId} has_been_clicked={hasBeenClicked.current} end_game={endGame}/>
             
             
             

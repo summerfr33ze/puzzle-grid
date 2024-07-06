@@ -43,6 +43,10 @@ html, body, #root {
 
 }
 
+.submit-btn {
+    margin-bottom: 1vh;
+}
+
 .create-grid-button {
     margin-top: 1vh;
     
@@ -78,8 +82,9 @@ html, body, #root {
 
 .grid-cell {
     border: 1px solid black;
-    padding: 40px;
+    padding: 5px;
     font-size: .8rem;
+    font-weight: bold;
 }
 
 .grid-form input{

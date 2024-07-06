@@ -37,8 +37,8 @@ function NameCell(props){
         return (
             
             <Form className="grid-cell" onSubmit={(event) => submitCellData(event)}>
-                <Form.Label htmlFor="cell-name">Name</Form.Label>
-                <Form.Control name="cell-name" size="sm" onChange={(event) => {setNameValue(event.target.value)}}></Form.Control>
+                <Form.Label htmlFor="cell-name" >Name</Form.Label>
+                <Form.Control name="cell-name" className="field" onChange={(event) => {setNameValue(event.target.value)}}></Form.Control>
                 <Button type="submit" hidden></Button>
             </Form>
            
@@ -96,12 +96,12 @@ function convertAnswersToArray(value){
         return (
         
                 <Form  className="grid-cell" onSubmit={(event) => submitCellData(event)}>
-                <Form.Label htmlFor="displayed-answer" > Displayed Answer</Form.Label>
-                <Form.Control name="displayed-answer" className="answer" size="sm" onChange={(event) => {setDisplayedAnswerValue(event.target.value)}} ></Form.Control>
-                <Form.Label htmlFor="accepted-answer" >Accepted Answers Separated By Commas</Form.Label>
-                <Form.Control name="accepted-answer" className="answer" size="sm" onChange={(event) => {convertAnswersToArray(event.target.value)}} ></Form.Control>
                 <Form.Label htmlFor="hint">Hint</Form.Label>
-                <Form.Control name="hint" size="sm" onChange={(event) => {setHintValue(event.target.value)}} ></Form.Control>
+                <Form.Control name="hint" className="field" onChange={(event) => {setHintValue(event.target.value)}} ></Form.Control>
+                <Form.Label htmlFor="displayed-answer" > Displayed Answer</Form.Label>
+                <Form.Control name="displayed-answer" className="field"  onChange={(event) => {setDisplayedAnswerValue(event.target.value)}} ></Form.Control>
+                <Form.Label htmlFor="accepted-answer" >Accepted Answers</Form.Label>
+                <Form.Control name="accepted-answer" className="field"  onChange={(event) => {convertAnswersToArray(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>
                 </Form>
             

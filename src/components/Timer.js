@@ -5,6 +5,7 @@ function Timer (props){
    
    const isPlaying = props.is_playing
    const hasBeenClicked = props.has_been_clicked
+   const endGame = props.end_game
     const [secs, setSecs] = useState(0)
     const [mins, setMins] = useState(0)
     const hasHappenedOnce = useRef(false)
@@ -26,7 +27,7 @@ function Timer (props){
             const interval = setInterval(() => {
 
                 if (mins === 0 && secs === 0){
-                    
+                    endGame()
                 }
 
                 if (secs > 0){
