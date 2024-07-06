@@ -49,7 +49,7 @@ function Create(props){
 
     if (hasBeenSubmitted === false){
     return (
-        <div>
+        <div className="create-page">
 
         <Header />
 

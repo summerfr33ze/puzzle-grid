@@ -1,12 +1,22 @@
 import {Link} from "react-router-dom"
 import LoginPopup from "./LoginPopup"
 import UsernamePopup from './UsernamePopup'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 
 function Header(props){
-    const [currentUsername, setCurrentUsername] = useState('ello')
+    const [currentUsername, setCurrentUsername] = useState('')
     const [usernameDisplay, setUsernameDisplay] = useState({display: "none"})
     const [loginDisplay, setLoginDisplay] = useState({display: "block"})
+
+    useEffect(()=> {
+        const username = sessionStorage.getItem('username')
+        if (username) {
+            setCurrentUsername(username)
+            setUsernameDisplay({display: "block"})
+            setLoginDisplay({display: "none"})
+        }
+
+    },[])
     
     return (
         <div className="header">
@@ -26,6 +36,8 @@ function Header(props){
                     <Link className="green-txt-btn" to="/genres/numbers">Numbers</Link>
                    
                     <Link className="green-txt-btn" to="/genres/literature">Literature</Link>
+
+                    <Link className="green-txt-btn" to={`/my-puzzles/${currentUsername}`} >My Puzzles</Link>
 
                 </div>
                     

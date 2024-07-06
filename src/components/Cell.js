@@ -20,7 +20,6 @@ function NameCell(props){
 
         
         let tempDataArray = props.dataArray
-        // console.log(tempDataArray)
         for(let cellData of tempDataArray){
         if(cellData.id === props.id){
         cellData.name = nameValue
@@ -56,8 +55,9 @@ function NameCell(props){
 function AnswerCell(props) {
 
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
-    const [answerValue, setAnswerValue] = useState('')
+    const [displayedAnswerValue, setDisplayedAnswerValue] = useState('')
     const [hintValue, setHintValue] = useState('')
+    const [acceptedAnswerValues, setAcceptedAnswerValues] = useState([])
     
     
     function submitCellData (event){
@@ -66,12 +66,18 @@ function AnswerCell(props) {
 
         
         let tempDataArray = props.dataArray
-        // console.log(tempDataArray)
         for(let cellData of tempDataArray){
         if(cellData.id === props.id){
-        cellData.answer = answerValue
+        cellData.displayed_answer = displayedAnswerValue
+        cellData.accepted_answers = acceptedAnswerValues
         cellData.hint = hintValue
         }
+
+        
+
+
+
+
 
        
 
@@ -79,13 +85,21 @@ function AnswerCell(props) {
         
     }
 }
+
+function convertAnswersToArray(value){
+    const answerArray = value.split(', ')
+    setAcceptedAnswerValues(answerArray)
+    
+}
     
     if(!hasBeenSubmitted){
         return (
         
                 <Form  className="grid-cell" onSubmit={(event) => submitCellData(event)}>
-                <Form.Label htmlFor="answer" >Answer</Form.Label>
-                <Form.Control name="answer" className="answer" size="sm" onChange={(event) => {setAnswerValue(event.target.value)}} ></Form.Control>
+                <Form.Label htmlFor="displayed-answer" > Displayed Answer</Form.Label>
+                <Form.Control name="displayed-answer" className="answer" size="sm" onChange={(event) => {setDisplayedAnswerValue(event.target.value)}} ></Form.Control>
+                <Form.Label htmlFor="accepted-answer" >Accepted Answers Separated By Commas</Form.Label>
+                <Form.Control name="accepted-answer" className="answer" size="sm" onChange={(event) => {convertAnswersToArray(event.target.value)}} ></Form.Control>
                 <Form.Label htmlFor="hint">Hint</Form.Label>
                 <Form.Control name="hint" size="sm" onChange={(event) => {setHintValue(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>
@@ -98,7 +112,7 @@ function AnswerCell(props) {
         return (
             <div className="grid-cell div-cell">
                 <div>* {hintValue} *</div>
-                <div>{answerValue}</div>
+                <div>{displayedAnswerValue}</div>
             </div>
         )
     }
@@ -120,8 +134,16 @@ function PlayerAnswerCell(props) {
     const isEnded = props.is_ended
     const endGame = props.end_game
     const hasBeenClicked = props.has_been_clicked
-    const answer = props.answer
+    const displayedAnswer = props.displayed_answer
+    const acceptedAnswers = props.accepted_answers
     const hint = props.hint
+
+    function checkAnswer(answer, acceptedAnswers){
+        if (acceptedAnswers.includes(answer)){
+            return true
+        }
+        else {return false}
+    }
     
 
 
@@ -142,7 +164,7 @@ function PlayerAnswerCell(props) {
         event.preventDefault()
         setHasBeenSubmitted(true)
 
-        if(answerValue !== answer){
+        if(checkAnswer(answerValue, acceptedAnswers) === false){
             endGame()
         }
     }
@@ -172,11 +194,11 @@ function PlayerAnswerCell(props) {
     else {
 
         
-        if (answerValue === answer && hasBeenClicked){
+        if (checkAnswer(answerValue, acceptedAnswers) && hasBeenClicked){
            
             return (
                 <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }} onClick={changeColor}>
-                    <div >* {answer} *</div>
+                    <div >* {displayedAnswer} *</div>
                     <div>{hint}</div>
                     
                 </div>

@@ -30,6 +30,7 @@ import uniqid from 'uniqid'
 
         if (count === chosenCellsPerSide^2*5)
         try {
+            
             let puzzleData = {
                 title: title,
                 description: description,
@@ -41,9 +42,8 @@ import uniqid from 'uniqid'
                 color_two: colorTwo,
                 featured: false
             }
-
-            console.log(puzzleData)
             const jwtToken = sessionStorage.getItem('jwtToken')
+            console.log(puzzleData)
             console.log(jwtToken)
             const response = await fetch("http://localhost:3000/create", {
                 method: 'POST',
@@ -88,7 +88,8 @@ import uniqid from 'uniqid'
                     }
                     let answerCellData = {
                         id: answerCellUniqid,
-                        answer: '',
+                        displayedAnswer: '',
+                        acceptedAnswers: [],
                         hint: ''
                     }
                     

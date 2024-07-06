@@ -6,14 +6,12 @@ import Home from './components/Home'
 import Create from './components/Create'
 import Signup from './components/Signup'
 import { Genres, Sports, Miscellaneous, TVandMovies, Numbers, Literature } from './components/Genres'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-
+import MyPuzzles from './components/MyPuzzles'
+import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Puzzle from './components/Puzzle'
+
 
 const router = createBrowserRouter([
   {
@@ -59,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "/genres/:genreId/puzzles/:puzzleId",
     element: <Puzzle />
+  },
+  {
+    path: "/my-puzzles/:currentUsername",
+    element: <MyPuzzles />
   }
  
   

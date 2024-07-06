@@ -20,7 +20,7 @@ function Puzzle (props){
     }
 
     const startGame = () => {
-        console.log("hello")
+        
          setIsPlaying(true)
          
         hasBeenClicked.current = true
@@ -38,6 +38,7 @@ function Puzzle (props){
             fetch(`http://localhost:3000/genres/sports/puzzles/${puzzleId}`)
             .then(response => response.json())
             .then((data) => {setPuzzle(data)})
+            .then(console.log(puzzle))
             
         }
     
@@ -70,7 +71,7 @@ function Puzzle (props){
                         }
                         else {
                             
-                            return <PlayerAnswerCell key={uniqId} id={i} hint={cellData.hint} answer={cellData.answer} color_one={puzzle.colorOne} color_two={puzzle.colorTwo} is_playing={isPlaying} end_game={endGame} is_ended={isEnded} has_been_clicked={hasBeenClicked.current}/>
+                            return <PlayerAnswerCell key={uniqId} id={i} hint={cellData.hint} displayed_answer={cellData.displayed_answer} accepted_answers={cellData.accepted_answers} color_one={puzzle.colorOne} color_two={puzzle.colorTwo} is_playing={isPlaying} end_game={endGame} is_ended={isEnded} has_been_clicked={hasBeenClicked.current}/>
                         }
                     })
                     
