@@ -19,11 +19,12 @@ import Link from 'react-router-dom'
 
 
     useEffect(() => {
+
+        
         const getPuzzles = async () => {
             fetch(`http://localhost:3000/genres/${props.type}`)
             .then(response => response.json())
             .then(data => setCurrentPuzzles(data))
-            
         }
 
         getPuzzles()
@@ -49,8 +50,7 @@ import Link from 'react-router-dom'
                 <Card.Img variant="top" src="" />
                         <Card.Body>
                             <Card.Title>{puzzle.title}</Card.Title>
-                                <Card.Text>{puzzle.genre.title}</Card.Text>
-                                <Card.Text>{puzzle.description}</Card.Text>
+                                <Card.Text>{puzzle.genre.title}</Card.Text>                                
                                 <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
                                 </Card.Body>
             </Card>

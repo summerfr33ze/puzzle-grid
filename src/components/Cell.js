@@ -57,21 +57,28 @@ function AnswerCell(props) {
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [displayedAnswerValue, setDisplayedAnswerValue] = useState('')
     const [hintValue, setHintValue] = useState('')
-    const [acceptedAnswerValues, setAcceptedAnswerValues] = useState([])
+    const [acceptedAnswerValues, setAcceptedAnswerValues] = useState('')
     
     
     function submitCellData (event){
         event.preventDefault()
         setHasBeenSubmitted(true)
 
+        let answerArray = acceptedAnswerValues.split(', ')
+        console.log(answerArray)
+
         
         let tempDataArray = props.dataArray
         for(let cellData of tempDataArray){
         if(cellData.id === props.id){
         cellData.displayed_answer = displayedAnswerValue
-        cellData.accepted_answers = acceptedAnswerValues
+        cellData.accepted_answers = answerArray
         cellData.hint = hintValue
+
         }
+    }
+
+    console.log(tempDataArray)
 
         
 
@@ -81,16 +88,12 @@ function AnswerCell(props) {
 
        
 
-        props.setDataArray(tempDataArray)
+    props.setDataArray(tempDataArray)
         
-    }
-}
-
-function convertAnswersToArray(value){
-    const answerArray = value.split(', ')
-    setAcceptedAnswerValues(answerArray)
     
 }
+
+
     
     if(!hasBeenSubmitted){
         return (
@@ -101,7 +104,7 @@ function convertAnswersToArray(value){
                 <Form.Label htmlFor="displayed-answer" > Displayed Answer</Form.Label>
                 <Form.Control name="displayed-answer" className="field"  onChange={(event) => {setDisplayedAnswerValue(event.target.value)}} ></Form.Control>
                 <Form.Label htmlFor="accepted-answer" >Accepted Answers</Form.Label>
-                <Form.Control name="accepted-answer" className="field"  onChange={(event) => {convertAnswersToArray(event.target.value)}} ></Form.Control>
+                <Form.Control name="accepted-answer" className="field"  onChange={(event) => {setAcceptedAnswerValues(event.target.value)}} ></Form.Control>
                 <button type="submit" hidden></button>
                 </Form>
             
@@ -167,6 +170,7 @@ function PlayerAnswerCell(props) {
         if(checkAnswer(answerValue, acceptedAnswers) === false){
             endGame()
         }
+        
     }
 
     if (isEnded){

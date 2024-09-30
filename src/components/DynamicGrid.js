@@ -19,7 +19,7 @@ import uniqid from 'uniqid'
                     return
                 }
                 else {
-                    console.log(val)
+                    
                     count += 1
                     
                 }
@@ -42,9 +42,14 @@ import uniqid from 'uniqid'
                 color_two: colorTwo,
                 featured: false
             }
+
+            console.log(puzzleData.title)
+
+            
+
+
             const jwtToken = sessionStorage.getItem('jwtToken')
-            console.log(puzzleData)
-            console.log(jwtToken)
+            
             const response = await fetch("http://localhost:3000/create", {
                 method: 'POST',
                 mode: 'cors',
@@ -88,8 +93,8 @@ import uniqid from 'uniqid'
                     }
                     let answerCellData = {
                         id: answerCellUniqid,
-                        displayedAnswer: '',
-                        acceptedAnswers: [],
+                        displayed_answer: '',
+                        accepted_answers: [],
                         hint: ''
                     }
                     

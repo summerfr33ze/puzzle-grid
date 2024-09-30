@@ -15,6 +15,8 @@ function MyPuzzles (props){
 
     useEffect(() => {
         
+        
+       
         const getPuzzles = async () => {
             const jwtToken = sessionStorage.getItem('jwtToken')
             fetch(`http://localhost:3000/mypuzzles/${currentUsername}`, {
@@ -25,6 +27,9 @@ function MyPuzzles (props){
             })
             .then(response => response.json())
             .then(data => setCurrentPuzzles(data))
+
+           
+            
             
             
         }
@@ -47,7 +52,6 @@ function MyPuzzles (props){
         <div className="genre-container">{
         
             currentPuzzles.map((puzzle) => {
-            console.log(puzzle)
             let puzzleId = puzzle._id
             const navigateToPuzzle = () => navigate(`localhost:3001/genres/sports/puzzles/${puzzleId}`)
             
@@ -57,7 +61,6 @@ function MyPuzzles (props){
                         <Card.Body>
                             <Card.Title>{puzzle.title}</Card.Title>
                                 <Card.Text>{puzzle.genre.title}</Card.Text>
-                                <Card.Text>{puzzle.description}</Card.Text>
                                 <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
                                 </Card.Body>
             </Card>

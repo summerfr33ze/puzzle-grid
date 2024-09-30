@@ -224,10 +224,9 @@ html, body, #root {
 .puzzle-card {
     display: flex;
     flex-direction: column;
+    width: 160px;
+    
     margin: .5vw;
-    
-    
-    
 }
 
 .puzzle {
@@ -285,7 +284,8 @@ html, body, #root {
 
 
 .footer {
-    position: absolute;
+    margin-top: 5px;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 6vh;
@@ -293,6 +293,5 @@ html, body, #root {
     background-color: rgb(31, 31, 31);
     color:#00FA9A;
     text-align: center;
-    padding: 10px;
-
+    padding: 2px;
 }
