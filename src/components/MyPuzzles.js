@@ -52,8 +52,10 @@ function MyPuzzles (props){
         <div className="genre-container">{
         
             currentPuzzles.map((puzzle) => {
+            console.log(puzzle)
             let puzzleId = puzzle._id
-            const navigateToPuzzle = () => navigate(`localhost:3001/genres/sports/puzzles/${puzzleId}`)
+            let genre = puzzle.genre.title
+            const navigateToPuzzle = () => navigate(`/genres/${genre}/puzzles/${puzzleId}`)
             
             return (
                 <Card style={{border: "3px solid black"}} key={uniqid()} className="puzzle-card">

@@ -7,7 +7,7 @@ import uniqid from 'uniqid'
 
  function DynamicGrid(props){
     const [dataArray, setDataArray] = useState([])
-    const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre, colorOne, colorTwo} = props
+    const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre, featured, colorOne, colorTwo} = props
 
     const submitPuzzle = async (req,res) => {
         let count = 0
@@ -30,6 +30,8 @@ import uniqid from 'uniqid'
 
         if (count === chosenCellsPerSide^2*5)
         try {
+
+            console.log(colorOne + colorTwo)
             
             let puzzleData = {
                 title: title,
