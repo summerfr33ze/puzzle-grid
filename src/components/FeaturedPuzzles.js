@@ -42,8 +42,9 @@ import Link from 'react-router-dom'
         
             currentPuzzles.map((puzzle) => {
             let puzzleId = puzzle._id
+            let genre = puzzle.genre.title
             console.log(puzzle)
-            const navigateToPuzzle = () => navigate(`puzzles/${puzzleId}`)
+            const navigateToPuzzle = () => navigate(`/genres/${genre}/puzzles/${puzzleId}`)
             
             return (
                 <Card style={{border: "3px solid black"}} key={uniqid()} className="puzzle-card">
