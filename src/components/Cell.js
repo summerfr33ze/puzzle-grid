@@ -10,8 +10,8 @@ function NameCell(props){
 
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
     const [nameValue, setNameValue] = useState('')
-
     
+
 
        
     function submitCellData (event){
@@ -140,9 +140,20 @@ function PlayerAnswerCell(props) {
     const displayedAnswer = props.displayed_answer
     const acceptedAnswers = props.accepted_answers
     const hint = props.hint
+    
+    /* make answer and accepted answers lower case so that answers aren't case sensitive
+    check answer against array of accepted answers */
+    function checkAnswer(answerValue, acceptedAnswers){
+        let lowerCaseAnswerValue = answerValue.toLowerCase()
+        let lowerCaseAcceptedAnswers = []
+        for(let i=0; i < acceptedAnswers.length; i++){
+         lowerCaseAcceptedAnswers.push(acceptedAnswers[i].toLowerCase())
+        }
 
-    function checkAnswer(answer, acceptedAnswers){
-        if (acceptedAnswers.includes(answer)){
+        
+
+
+        if (lowerCaseAcceptedAnswers.includes(lowerCaseAnswerValue)){
             return true
         }
         else {return false}
