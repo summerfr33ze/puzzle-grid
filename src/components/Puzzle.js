@@ -59,9 +59,8 @@ function Puzzle (props){
             <div className="puzzle">
                 <div className="title-container">
                     <div className="puzzle-title" style={{ color: puzzle.color_two}}>{puzzle.title}</div>
-                    <button className="play-button" onClick={startGame} style={{color: puzzle.color_two}} >Play</button>
+                    <button className="play-button" onClick={startGame} style={{color: puzzle.color_two, boxShadow: `2px 2px 0px ${puzzle.color_one}`}}>Play</button>
                 </div>
-                
                 <div className="puzzle-grid" style={{gridTemplateColumns: `repeat(${puzzle.cells_per_side}, 1fr 2fr)`, gridTemplateRows: `repeat(${puzzle.cells_per_side}, 1fr)`}}>{
 
                     puzzle.data_array?.map((cellData, i)=> {
@@ -77,7 +76,8 @@ function Puzzle (props){
                         }
                     })
                     
-                }</div>
+                }
+                </div>
                 <div className="description" >{puzzle.description}</div>
             </div>
             

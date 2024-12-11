@@ -7,6 +7,8 @@ function Header(props){
     const [currentUsername, setCurrentUsername] = useState('')
     const [usernameDisplay, setUsernameDisplay] = useState({display: "none"})
     const [loginDisplay, setLoginDisplay] = useState({display: "block"})
+    const [createDisplay, setCreateDisplay] = useState({display: "none"})
+    
 
     useEffect(()=> {
         const username = sessionStorage.getItem('username')
@@ -14,6 +16,8 @@ function Header(props){
             setCurrentUsername(username)
             setUsernameDisplay({display: "block"})
             setLoginDisplay({display: "none"})
+            setCreateDisplay({display: "block"})
+            
         }
 
     },[])
@@ -42,9 +46,9 @@ function Header(props){
                 </div>
                     
                 <div className="header-right">
-                    <Link className="green-txt-btn" to="/create">Create</Link>
-                    <LoginPopup setCurrentUsername={setCurrentUsername} loginDisplay={loginDisplay}  setLoginDisplay={setLoginDisplay} setUsernameDisplay= {setUsernameDisplay}></LoginPopup>
-                    <UsernamePopup currentUsername={currentUsername}  usernameDisplay={usernameDisplay} setLoginDisplay={setLoginDisplay} setUsernameDisplay= {setUsernameDisplay}/>
+                    <Link className="green-txt-btn"  to="/create" style={createDisplay}>Create</Link>
+                    <LoginPopup setCurrentUsername={setCurrentUsername} loginDisplay={loginDisplay}  setLoginDisplay={setLoginDisplay} setUsernameDisplay= {setUsernameDisplay} setCreateDisplay={setCreateDisplay}></LoginPopup>
+                    <UsernamePopup currentUsername={currentUsername}  usernameDisplay={usernameDisplay} setLoginDisplay={setLoginDisplay} setUsernameDisplay= {setUsernameDisplay} setCreateDisplay={setCreateDisplay}/>
                 </div>
         </div>
     )

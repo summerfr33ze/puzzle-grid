@@ -4,6 +4,7 @@ import './index.css';
 import './App.css'
 import Home from './components/Home'
 import Create from './components/Create'
+import Edit from './components/Edit'
 import Signup from './components/Signup'
 import { Genres, Sports, Miscellaneous, TVandMovies, Numbers, Literature } from './components/Genres'
 import MyPuzzles from './components/MyPuzzles'
@@ -59,10 +60,15 @@ const router = createBrowserRouter([
     element: <Puzzle />
   },
   {
+    path: "/genres/:genreId/puzzles/:puzzleId/edit",
+    element: <Edit />
+
+  } ,
+  {
     path: "/my-puzzles/:currentUsername",
     element: <MyPuzzles />
-  }
- 
+  },
+  
   
  
 ]);

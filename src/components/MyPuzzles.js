@@ -54,16 +54,20 @@ function MyPuzzles (props){
             currentPuzzles.map((puzzle) => {
             console.log(puzzle)
             let puzzleId = puzzle._id
-            let genre = puzzle.genre.title
-            const navigateToPuzzle = () => navigate(`/genres/${genre}/puzzles/${puzzleId}`)
-            
+            let genreId = puzzle.genre.title
+            const navigateToPuzzle = () => navigate(`/genres/${genreId}/puzzles/${puzzleId}`)
+            const navigateToEdit = () => navigate(`/genres/${genreId}/puzzles/${puzzleId}/edit`)
             return (
                 <Card style={{border: "3px solid black"}} key={uniqid()} className="puzzle-card">
                 <Card.Img variant="top" src="" />
                         <Card.Body>
                             <Card.Title>{puzzle.title}</Card.Title>
                                 <Card.Text>{puzzle.genre.title}</Card.Text>
-                                <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
+                                <div class="button-container">
+                                    <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
+                                    <Button className="puzzle-card-button" onClick={navigateToEdit}>Edit</Button>
+                                </div>
+                                
                                 </Card.Body>
             </Card>
             )

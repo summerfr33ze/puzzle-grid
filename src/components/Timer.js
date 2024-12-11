@@ -8,6 +8,7 @@ function Timer (props){
    const endGame = props.end_game
     const [secs, setSecs] = useState(0)
     const [mins, setMins] = useState(0)
+    const [secString, setSecString] = useState('00')
     const hasHappenedOnce = useRef(false)
     
 
@@ -30,13 +31,20 @@ function Timer (props){
                     endGame()
                 }
 
-                if (secs > 0){
+                if (secs > 10){
                     setSecs(secs - 1)
+                    setSecString(`${secs - 1}`)
+                }
+                else if (secs <= 10 && secs > 0){
+                    setSecs(secs - 1)
+                    setSecString(`0${secs - 1}`)
                 }
                 else {
                     
                     setSecs(59)
+                    setSecString(`59`)
                     setMins(mins - 1)
+                    
                 }
                },1000)
 
@@ -52,7 +60,7 @@ function Timer (props){
 
     return (
         <div className="timer">
-            <span>{mins + " mins"} </span>:<span>{secs + " secs"} </span>
+            <span>{mins} </span>:<span>{secString} </span>
         </div>
     )
 }

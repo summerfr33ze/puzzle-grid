@@ -6,7 +6,7 @@ function Signup (props){
     const username = useRef(null)
     const password = useRef(null)
     const confirmPassword = useRef(null)
-
+    const [responseDisplay, setResponseDisplay] = useState("")
 
 
     async function signUpUser(e){
@@ -35,6 +35,9 @@ function Signup (props){
             .then(response => response.json()) 
             .then(json => console.log(json));
             }
+            else {
+                setResponseDisplay("Passwords do not Match")
+            }
             
 
             
@@ -47,15 +50,21 @@ function Signup (props){
     }
 
   return (
-        <Form className="login-form">
+        <div className="signup-container">
+            <div className="signup-banner">Puzzle Grid</div>
+            <Form className="signup-form">
             <Form.Label htmlFor="username">Username</Form.Label>
             <Form.Control type="text" name="username" ref={username}></Form.Control>
             <Form.Label htmlFor="password">Password</Form.Label>
             <Form.Control type="password" name="password" ref={password}></Form.Control>
             <Form.Label htmlFor="confirm-password">Confirm Password</Form.Label>
             <Form.Control type="password" name="confirm-password" ref={confirmPassword}></Form.Control>
-            <Button variant="secondary" className="login-form-button" onClick={(e) => {signUpUser(e)}}>Sign Up</Button>
-        </Form>
+            <button className="login-form-btn" onClick={(e) => {signUpUser(e)}}>Sign Up</button>
+            </Form>
+            <div className="response-display">{responseDisplay}</div>
+            
+        </div>
+        
   )
 }
 
