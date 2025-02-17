@@ -1,4 +1,5 @@
-import {useEffect, useState, useRef, useParams} from 'react'
+import {useEffect, useState, useRef} from 'react'
+import {useParams} from "react-router"
 import {Form} from 'react-bootstrap'
 import Footer from './Footer'
 import Header from './Header'
@@ -6,25 +7,13 @@ import DynamicGrid from './DynamicGrid'
 
 function Edit(props) {
 
-    useEffect(() => {
-        
-
-
-        const getPuzzle = async () => {
-            fetch(`http://localhost:3000/genres/sports/puzzles/${puzzleId}`)
-            .then(response => response.json())
-            .then((data) => {setPuzzle(data)})
-            .then(console.log(puzzle))
-            
-        }
     
-        getPuzzle()
-        
-     
-    }, [])
 
     const [puzzle, setPuzzle] = useState({})
-    const {puzzleId} = useParams()
+    const params = useParams()
+    console.log(params)
+    const puzzleId = params.puzzleId
+    const genreId = params.genreId
     const [chosenColorOne, setChosenColorOne] = useState(puzzle.color_one)
     const [chosenColorTwo, setChosenColorTwo] = useState(puzzle.color_two)
     const [chosenCellsPerSide, setChosenCellsPerSide] = useState(puzzle.cells_per_side)
@@ -32,28 +21,30 @@ function Edit(props) {
     const [chosenDescription, setChosenDescription] = useState(puzzle.description)
     const [chosenPlayTime, setChosenPlayTime] = useState(puzzle.play_time)
     const [chosenGenre, setChosenGenre] = useState(puzzle.genre.title)
-    const cellsPerSide = useRef(puzzle.cells_per_side)
-    const colorOne = useRef(puzzle.color_one)
-    const colorTwo = useRef(puzzle.color_two)
+    const cellsPerSide = useRef(null)
+    const colorOne = useRef(null)
+    const colorTwo = useRef(null)
     const hasHappenedOnce = useRef(false)
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
-    const title = useRef(puzzle.title)
-    const description = useRef(puzzle.description)
-    const playTime = useRef(puzzle.play_time)
-    const genre = useRef(puzzle.genre.title)
+    const title = useRef(null)
+    const description = useRef(null)
+    const playTime = useRef(null)
+    const genre = useRef(null)
     const featured = useState(false)
 
     function generateGrid(event){
         event.preventDefault()
         hasHappenedOnce.current = false
-        setChosenColorOne(colorOne.current.value)
-        setChosenColorTwo(colorTwo.current.value)
-        setChosenCellsPerSide(cellsPerSide.current.value)
+
+
+        setChosenColorOne(colorOne.current.value || chosenColorOne)
+        setChosenColorTwo(colorTwo.current.value || chosenColorTwo)
+        setChosenCellsPerSide(cellsPerSide.current.value || chosenCellsPerSide)
+        setChosenTitle(title.current.value || chosenTitle)
+        setChosenPlayTime(playTime.current.value || chosenPlayTime)
+        setChosenGenre(genre.current.value ||chosenGenre)
+        setChosenDescription(description.current.value || chosenDescription)
         setHasBeenSubmitted(true)
-        setChosenTitle(title.current.value)
-        setChosenPlayTime(playTime.current.value)
-        setChosenGenre(genre.current.value)
-        setChosenDescription(description.current.value)
         
     }
 
@@ -120,7 +111,7 @@ function Edit(props) {
     )
     }
     else {
-        return <DynamicGrid chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}/>
+        return <DynamicGrid puzzle_id={puzzleId} chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}  type="edit" data_array={puzzle.data_array}/>
     }
 
 

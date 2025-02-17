@@ -17,7 +17,7 @@ function UsernamePopup (props){
     }
 
     return (
-        <div class="dropdown">
+        <div className="dropdown">
             <button style={props.usernameDisplay} className="green-txt-btn" onClick={openPopup} >{props.currentUsername} </button>
 
             <button style={popupDisplay} className="green-txt-btn menu-btn dropdown-logout"  onClick={(event) => {logoutUser(event)}}>Logout</button>

@@ -11,10 +11,8 @@ import Link from 'react-router-dom'
     const navigate = useNavigate()
 
     // capitalize first letter of genre to display on title
-    const firstLetter = props.type.charAt(0)
-    const capFirstLetter = firstLetter.toUpperCase()
-    const capitalized = capFirstLetter + props.type.slice(1)
-    
+ 
+   
     
 
 
@@ -35,7 +33,7 @@ import Link from 'react-router-dom'
         <div className="featured-puzzles">
 
         
-        <div className="genre-title">{capitalized + " Puzzles" }</div>
+        <div className="genre-title">{props.type + " Puzzles" }</div>
         
         
         <div className="genre-container">{
@@ -43,19 +41,23 @@ import Link from 'react-router-dom'
             currentPuzzles.map((puzzle) => {
             let puzzleId = puzzle._id
             let genre = puzzle.genre.title
+            console.log(props.type, genre)
             console.log(puzzle)
             const navigateToPuzzle = () => navigate(`/genres/${genre}/puzzles/${puzzleId}`)
             
-            return (
-                <Card style={{border: "3px solid black"}} key={uniqid()} className="puzzle-card">
-                <Card.Img variant="top" src="" />
-                        <Card.Body>
-                            <Card.Title>{puzzle.title}</Card.Title>
-                                <Card.Text>{puzzle.genre.title}</Card.Text>                                
-                                <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
-                                </Card.Body>
-            </Card>
-            )
+            if(genre === props.type){
+                return (
+                    <Card style={{border: "3px solid black"}} key={uniqid()} className="puzzle-card">
+                    <Card.Img variant="top" src="" />
+                            <Card.Body>
+                                <Card.Title>{puzzle.title}</Card.Title>
+                                    <Card.Text>{puzzle.genre.title}</Card.Text>                                
+                                    <button className="card-play-btn" onClick={navigateToPuzzle}>Play</button>
+                                    </Card.Body>
+                </Card>
+                )
+            }
+            
         })}</div>
         </div>
 

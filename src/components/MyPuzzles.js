@@ -63,9 +63,9 @@ function MyPuzzles (props){
                         <Card.Body>
                             <Card.Title>{puzzle.title}</Card.Title>
                                 <Card.Text>{puzzle.genre.title}</Card.Text>
-                                <div class="button-container">
-                                    <Button className="puzzle-card-button" onClick={navigateToPuzzle}>Play</Button>
-                                    <Button className="puzzle-card-button" onClick={navigateToEdit}>Edit</Button>
+                                <div className="button-container">
+                                    <button className="card-play-btn" onClick={navigateToPuzzle}>Play</button>
+                                    <button className="card-play-btn" onClick={navigateToEdit}>Edit</button>
                                 </div>
                                 
                                 </Card.Body>

@@ -27,33 +27,33 @@ function Genres (props) {
 function Sports (props) {
     
     return(
-        <FeaturedPuzzles type="sports"></FeaturedPuzzles>
+        <FeaturedPuzzles type="Sports"></FeaturedPuzzles>
     )
 
 }
 
 function TVandMovies (props) {
     return(
-    <FeaturedPuzzles type="tv-and-movies"></FeaturedPuzzles>
+    <FeaturedPuzzles type="TV-and-Movies"></FeaturedPuzzles>
     )
 }
 
 function Numbers (props) {
     return(
-    <FeaturedPuzzles type="numbers"></FeaturedPuzzles>
+    <FeaturedPuzzles type="Numbers"></FeaturedPuzzles>
     )
 }
 
 function Literature (props) {
     return (
-    <FeaturedPuzzles type="literature"></FeaturedPuzzles>
+    <FeaturedPuzzles type="Literature"></FeaturedPuzzles>
     )
 }
 
 function Miscellaneous (props) {
     return (
         <div>
-        <FeaturedPuzzles type="miscellaneous"></FeaturedPuzzles>
+        <FeaturedPuzzles type="Miscellaneous"></FeaturedPuzzles>
         </div>
     )
 }

@@ -9,7 +9,9 @@ import Timer from './Timer'
 function Puzzle (props){
  
     const [puzzle, setPuzzle] = useState({})
-    const {puzzleId} = useParams()
+    const params = useParams()
+    const puzzleId = params.puzzleId
+    const genreId = params.genreId
     const [hasHappenedOnce, setHasHappenedOnce] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const hasBeenClicked = useRef(false)
@@ -35,7 +37,7 @@ function Puzzle (props){
         
             
         const getPuzzle = async () => {
-            fetch(`http://localhost:3000/genres/sports/puzzles/${puzzleId}`)
+            fetch(`http://localhost:3000/genres/${genreId}/puzzles/${puzzleId}`)
             .then(response => response.json())
             .then((data) => {setPuzzle(data)})
             .then(console.log(puzzle))

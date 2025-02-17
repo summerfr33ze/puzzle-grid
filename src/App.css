@@ -208,6 +208,10 @@ html, body, #root {
     font-family: Lilita;
 }
 
+.login-form-btn {
+    margin: 4px;
+}
+
 .signup-container {
     display: flex;
     flex-direction: column;
@@ -239,7 +243,7 @@ html, body, #root {
 
 
 
-.login-form-btn {
+.signup-form-btn {
     margin-top: 20px;
     background-color: #7B68EE;
     border-radius: 5px;
@@ -248,8 +252,20 @@ html, body, #root {
     
 }
 
-.login-form-btn:hover{
+.signup-form-btn:hover{
     background-color: #8d7ceb;
+}
+
+.card-play-btn{
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    color: #00FA9A;
+    font-size: 1.3rem;
+}
+
+.card-play-btn:hover{
+    color: #8d7ceb;
 }
 
 
@@ -398,4 +414,8 @@ html, body, #root {
 .dropdown-logout {
     position: absolute;
     margin-top: 1.2vh;
+}
+
+.response-display2{
+    margin-top: -5vh;
 }

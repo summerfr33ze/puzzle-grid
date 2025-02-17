@@ -11,7 +11,8 @@ function LoginPopup(props) {
     const [popupDisplay, setPopupDisplay] = useState({display: 'none'})
     const closePopup = () => setPopupDisplay({display: "none"})
     const openPopup = () => setPopupDisplay({display: "block"})
-
+    
+    
 
 
     async function loginUser(event){
