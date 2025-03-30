@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react'
 import {useParams} from "react-router"
-import {Form} from 'react-bootstrap'
+import {Form, Textarea} from 'react-bootstrap'
 import Footer from './Footer'
 import Header from './Header'
 import DynamicGrid from './DynamicGrid'
@@ -11,7 +11,6 @@ function Edit(props) {
 
     const [puzzle, setPuzzle] = useState({})
     const params = useParams()
-    console.log(params)
     const puzzleId = params.puzzleId
     const genreId = params.genreId
     const [chosenColorOne, setChosenColorOne] = useState(puzzle.color_one)
@@ -20,7 +19,7 @@ function Edit(props) {
     const [chosenTitle, setChosenTitle] = useState(puzzle.title)
     const [chosenDescription, setChosenDescription] = useState(puzzle.description)
     const [chosenPlayTime, setChosenPlayTime] = useState(puzzle.play_time)
-    const [chosenGenre, setChosenGenre] = useState(puzzle.genre.title)
+    const [chosenGenre, setChosenGenre] = useState(puzzle.genre)
     const cellsPerSide = useRef(null)
     const colorOne = useRef(null)
     const colorTwo = useRef(null)
@@ -31,6 +30,7 @@ function Edit(props) {
     const playTime = useRef(null)
     const genre = useRef(null)
     const featured = useState(false)
+    const jwtToken = sessionStorage.getItem('jwtToken')
 
     function generateGrid(event){
         event.preventDefault()
@@ -48,6 +48,20 @@ function Edit(props) {
         
     }
 
+    useEffect(()=>{
+        fetch(`http://localhost:3000/genres/${genreId}/puzzles/${puzzleId}`, {
+            method: 'GET',
+            headers: {
+                "authorization": `Bearer ${jwtToken}`
+            },
+            
+        })
+        .then(response => response.json())
+        .then((data) => {setPuzzle(data)})
+        
+        
+    }, [])
+
     
     
 
@@ -62,13 +76,13 @@ function Edit(props) {
 
         <Form className="grid-form">
 
-        <Form.Label htmlFor="title" >Puzzle Title: {puzzle.title}</Form.Label>
-        <Form.Control type="text" name="title"ref={title} className="create-page-input"></Form.Control>
+        <Form.Label htmlFor="title" >Puzzle Title: &nbsp;&nbsp; {`  ${puzzle.title}`}</Form.Label>
+        <Form.Control type="text" name="title" ref={title} className="create-page-input"></Form.Control>
 
-        <Form.Label htmlFor="description">Description: {puzzle.description}</Form.Label>
-        <Form.Control type="textarea" name="description" ref={description} className="create-page-input" ></Form.Control>
+        <Form.Label htmlFor="description">Description: &nbsp;&nbsp; {puzzle.description}</Form.Label>
+        <Form.Control  name="description" ref={description} className="create-page-input" ></Form.Control>
 
-        <Form.Label htmlFor="genre">Genre: {puzzle.genre.title}</Form.Label>
+        <Form.Label htmlFor="genre">Genre: {}</Form.Label>
         <Form.Select name="genre" className="create-page-input" size="sm" ref={genre}>
             <option value="64eece4f4e6db924320059f6">Sports</option>
             <option value="64eecf1e4e6db924320059f7">TV and Movies</option>
@@ -77,16 +91,17 @@ function Edit(props) {
             <option value="64eed17e4e6db924320059fa">Miscellaneous</option>
         </Form.Select>
 
-        <Form.Label htmlFor="cells-per-side">Number of cells per side: {puzzle.cells_per_side}</Form.Label>
+        <Form.Label htmlFor="cells-per-side">Number of cells per side: &nbsp;&nbsp; {puzzle.cells_per_side}</Form.Label>
         <Form.Control type="number" name="cells-per-side"  ref={cellsPerSide} className="create-page-input"></Form.Control>
 
-        <Form.Group className="color-container">
-        <Form.Label htmlFor="color-one">Light Color: {puzzle.color_one} Dark Color: {puzzle.color_two} </Form.Label>
-        <Form.Control type="color" style={{width: "100px", border: "none"}} className="choose-color" name="color-one" ref={colorOne}  defaultValue={puzzle.color_one} />
-        <Form.Control type="color" className="choose-color" ref={colorTwo} style={{width: "100px", border: "none"}} defaultValue={puzzle.color_two}/>
-        </Form.Group>
+        
+        <Form.Label htmlFor="color-one">Light Color: </Form.Label>
+        <Form.Control type="color" name="color-one" style={{width: "100px", border: "none"}} className="choose-color"  ref={colorOne}  defaultValue={puzzle.color_one} />
+        <Form.Label htmlFor="color-two">Dark Color: </Form.Label>
+        <Form.Control type="color" name="color-two" className="choose-color" ref={colorTwo} style={{width: "100px", border: "none"}} defaultValue={puzzle.color_two}/>
+        
 
-        <Form.Label htmlFor="play-time">Playtime: {puzzle.play_time}</Form.Label>
+        <Form.Label htmlFor="play-time">Playtime: &nbsp;&nbsp;{puzzle.play_time}</Form.Label>
         <Form.Control type="number" name="play-time"  ref={playTime}></Form.Control>
 
         

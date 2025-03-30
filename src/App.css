@@ -9,7 +9,7 @@
 }
 
 html, body, #root {
-    height: 100%;
+    height: 105%;
 }
 
 
@@ -131,8 +131,7 @@ html, body, #root {
 
 
 .color-container {
-    display:flex;
-    gap: 10px;
+    
 }
 
 
