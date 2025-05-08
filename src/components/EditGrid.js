@@ -1,19 +1,18 @@
-
 import {useState, useRef, useEffect, React} from 'react'
 import {NameCell, AnswerCell} from './Cell'
 
 
 import uniqid from 'uniqid'
 
- function DynamicGrid(props){
+ function EditGrid(props){
     
-    const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre, featured, colorOne, colorTwo, type} = props
-    const initDataArray = props.data_array || undefined
-    const [dataArray, setDataArray] = useState(initDataArray || [])
+    const {puzzleId, chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genreId, featured, colorOne, colorTwo, data} = props
+    
+    let [dataArray, setDataArray] = useState(data)
 
     const submitPuzzle = async (req,res) => {
         let count = 0
-        for (let cellData of dataArray){
+        for (let cellData of dataState){
             
             for (let val in cellData){
                 if (val === ''){
@@ -39,7 +38,7 @@ import uniqid from 'uniqid'
                 id: props.puzzle_id || undefined,
                 title: title,
                 description: description,
-                genre: genre,
+                genre: genreId,
                 play_time: playTime,
                 cells_per_side: chosenCellsPerSide,
                 data_array: dataArray,
@@ -55,30 +54,16 @@ import uniqid from 'uniqid'
 
             const jwtToken = sessionStorage.getItem('jwtToken')
 
-            if (initDataArray === undefined){
-                const response = await fetch("http://localhost:3000/create", {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: {
-                        "content-type": "application/json",
-                        "authorization": `Bearer ${jwtToken}`
-                    },
-                    body: JSON.stringify(puzzleData)
-                    
-                })
-                .then(response => response.text()) 
-                .then(text => console.log(text));
-            }
-            else {
+            
 
-                const response = await fetch(`http://localhost:3000/edit/${genre}/puzzles/${}`, {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: {
-                        "content-type": "application/json",
-                        "authorization": `Bearer ${jwtToken}`
-                    },
-                    body: JSON.stringify(puzzleData)
+            const response = await fetch(`http://localhost:3000/edit/${genreId}/puzzles/${puzzleId}`, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                "content-type": "application/json",
+                "authorization": `Bearer ${jwtToken}`
+                },
+                body: JSON.stringify(puzzleData)
                     
                 })
                 .then(response => response.text()) 
@@ -91,7 +76,7 @@ import uniqid from 'uniqid'
             
             
             
-        }
+        
         catch (error) {
             console.error(error)
         }
@@ -146,7 +131,7 @@ import uniqid from 'uniqid'
         return (
             <div className="grid-container">
                 <div className="dynamic-grid" style={{gridTemplateColumns: `repeat(${chosenCellsPerSide}, 1fr 2fr)`, gridTemplateRows: `repeat(${chosenCellsPerSide}, 1fr)`}}>{
-                    dataArray?.map((cellData,i) => {
+                    data?.map((cellData,i) => {
                         // console.log(cellData)
                         if(cellData.name === ""){
 

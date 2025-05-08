@@ -126,7 +126,7 @@ function Edit(props) {
     )
     }
     else {
-        return <DynamicGrid puzzle_id={puzzleId} chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}  type="edit" data_array={puzzle.data_array}/>
+        return <EditGrid puzzle_id={puzzleId} chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre_id={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}   data_array={puzzle.data_array}/>
     }
 
 
