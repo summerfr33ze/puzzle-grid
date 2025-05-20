@@ -6,13 +6,13 @@ import uniqid from 'uniqid'
 
  function EditGrid(props){
     
-    const {puzzleId, chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genreId, featured, colorOne, colorTwo, data} = props
+    const {puzzleId, chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genreId, featured, colorOne, colorTwo, data, originalTitle} = props
     
     let [dataArray, setDataArray] = useState(data)
 
     const submitPuzzle = async (req,res) => {
         let count = 0
-        for (let cellData of dataState){
+        for (let cellData of dataArray){
             
             for (let val in cellData){
                 if (val === ''){
@@ -35,7 +35,7 @@ import uniqid from 'uniqid'
             console.log(colorOne + colorTwo)
             
             let puzzleData = {
-                id: props.puzzle_id || undefined,
+                _id: puzzleId,
                 title: title,
                 description: description,
                 genre: genreId,
@@ -47,7 +47,7 @@ import uniqid from 'uniqid'
                 featured: false
             }
 
-            console.log(puzzleData.title)
+            console.log(puzzleData)
 
             
 
@@ -82,57 +82,15 @@ import uniqid from 'uniqid'
         }
     }
 
-    useEffect(() => {
-        
-
-        if (!hasHappenedOnce.current){
-            
-            let cellsPerSide = chosenCellsPerSide
-            
-
-            const getGridData = (cellsPerSide) => {
-                
-                let tempDataArray = []
     
-                for(let i=1; i <= cellsPerSide ** 2; i++){
-                    let nameCellUniqid = uniqid()
-                    let answerCellUniqid = uniqid()
-                    let nameCellData = {
-                        id: nameCellUniqid,
-                        name: ''
-                    }
-                    let answerCellData = {
-                        id: answerCellUniqid,
-                        displayed_answer: '',
-                        accepted_answers: [],
-                        hint: ''
-                    }
-                    
-                    tempDataArray.push(nameCellData, answerCellData)
-                }
-                
-                setDataArray(tempDataArray)
-                
-                
-                
-                hasHappenedOnce.current = true
-                
-            }
-
-           
-    
-        getGridData(cellsPerSide)
-        }
-        
-        },[chosenCellsPerSide, dataArray])
-
         
     
         return (
             <div className="grid-container">
                 <div className="dynamic-grid" style={{gridTemplateColumns: `repeat(${chosenCellsPerSide}, 1fr 2fr)`, gridTemplateRows: `repeat(${chosenCellsPerSide}, 1fr)`}}>{
                     data?.map((cellData,i) => {
-                        // console.log(cellData)
+                        console.log(title)
+                        
                         if(cellData.name === ""){
 
                             
@@ -155,4 +113,4 @@ import uniqid from 'uniqid'
     
 }
 
-export default DynamicGrid
+export default EditGrid

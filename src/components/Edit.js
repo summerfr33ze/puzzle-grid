@@ -3,7 +3,7 @@ import {useParams} from "react-router"
 import {Form, Textarea} from 'react-bootstrap'
 import Footer from './Footer'
 import Header from './Header'
-import DynamicGrid from './DynamicGrid'
+import EditGrid from './EditGrid'
 
 function Edit(props) {
 
@@ -13,19 +13,17 @@ function Edit(props) {
     const params = useParams()
     const puzzleId = params.puzzleId
     const genreId = params.genreId
-    const [chosenColorOne, setChosenColorOne] = useState(puzzle.color_one)
-    const [chosenColorTwo, setChosenColorTwo] = useState(puzzle.color_two)
-    const [chosenCellsPerSide, setChosenCellsPerSide] = useState(puzzle.cells_per_side)
-    const [chosenTitle, setChosenTitle] = useState(puzzle.title)
-    const [chosenDescription, setChosenDescription] = useState(puzzle.description)
-    const [chosenPlayTime, setChosenPlayTime] = useState(puzzle.play_time)
-    const [chosenGenre, setChosenGenre] = useState(puzzle.genre)
+    const [chosenColorOne, setChosenColorOne] = useState('')
+    const [chosenColorTwo, setChosenColorTwo] = useState('')
+    const [chosenTitle, setChosenTitle] = useState('')
+    const [chosenDescription, setChosenDescription] = useState('')
+    const [chosenPlayTime, setChosenPlayTime] = useState('')
+    const [chosenGenre, setChosenGenre] = useState('')
     const cellsPerSide = useRef(null)
     const colorOne = useRef(null)
     const colorTwo = useRef(null)
     const hasHappenedOnce = useRef(false)
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
-    const title = useRef(null)
     const description = useRef(null)
     const playTime = useRef(null)
     const genre = useRef(null)
@@ -37,14 +35,14 @@ function Edit(props) {
         hasHappenedOnce.current = false
 
 
-        setChosenColorOne(colorOne.current.value || chosenColorOne)
-        setChosenColorTwo(colorTwo.current.value || chosenColorTwo)
-        setChosenCellsPerSide(cellsPerSide.current.value || chosenCellsPerSide)
-        setChosenTitle(title.current.value || chosenTitle)
-        setChosenPlayTime(playTime.current.value || chosenPlayTime)
-        setChosenGenre(genre.current.value ||chosenGenre)
-        setChosenDescription(description.current.value || chosenDescription)
+        setChosenColorOne(colorOne.current.value || puzzle.color_one)
+        setChosenColorTwo(colorTwo.current.value || puzzle.color_two)
+        setChosenPlayTime(playTime.current.value || puzzle.play_time)
+        setChosenGenre(genre.current.value || puzzle.genre)
+        setChosenDescription(description.current.value || puzzle.description)
         setHasBeenSubmitted(true)
+
+       
         
     }
 
@@ -76,9 +74,7 @@ function Edit(props) {
 
         <Form className="grid-form">
 
-        <Form.Label htmlFor="title" >Puzzle Title: &nbsp;&nbsp; {`  ${puzzle.title}`}</Form.Label>
-        <Form.Control type="text" name="title" ref={title} className="create-page-input"></Form.Control>
-
+        <div>Puzzle Title: &nbsp;&nbsp; {puzzle.title}</div>
         <Form.Label htmlFor="description">Description: &nbsp;&nbsp; {puzzle.description}</Form.Label>
         <Form.Control  name="description" ref={description} className="create-page-input" ></Form.Control>
 
@@ -91,8 +87,7 @@ function Edit(props) {
             <option value="64eed17e4e6db924320059fa">Miscellaneous</option>
         </Form.Select>
 
-        <Form.Label htmlFor="cells-per-side">Number of cells per side: &nbsp;&nbsp; {puzzle.cells_per_side}</Form.Label>
-        <Form.Control type="number" name="cells-per-side"  ref={cellsPerSide} className="create-page-input"></Form.Control>
+        
 
         
         <Form.Label htmlFor="color-one">Light Color: </Form.Label>
@@ -101,7 +96,7 @@ function Edit(props) {
         <Form.Control type="color" name="color-two" className="choose-color" ref={colorTwo} style={{width: "100px", border: "none"}} defaultValue={puzzle.color_two}/>
         
 
-        <Form.Label htmlFor="play-time">Playtime: &nbsp;&nbsp;{puzzle.play_time}</Form.Label>
+        <Form.Label htmlFor="play-time">Playtime: &nbsp;&nbsp;{puzzle.play_time} &nbsp;minutes</Form.Label>
         <Form.Control type="number" name="play-time"  ref={playTime}></Form.Control>
 
         
@@ -126,7 +121,7 @@ function Edit(props) {
     )
     }
     else {
-        return <EditGrid puzzle_id={puzzleId} chosenCellsPerSide={chosenCellsPerSide} hasHappenedOnce={hasHappenedOnce} title={chosenTitle} description={chosenDescription} playTime={chosenPlayTime} genre_id={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}   data_array={puzzle.data_array}/>
+        return <EditGrid puzzleId={puzzleId} chosenCellsPerSide={puzzle.cells_per_side} hasHappenedOnce={hasHappenedOnce} title={puzzle.title} description={chosenDescription} playTime={chosenPlayTime} genreId={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}   data={puzzle.data_array} />
     }
 
 

@@ -8,8 +8,7 @@ import uniqid from 'uniqid'
  function DynamicGrid(props){
     
     const {chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genre, featured, colorOne, colorTwo, type} = props
-    const initDataArray = props.data_array || undefined
-    const [dataArray, setDataArray] = useState(initDataArray || [])
+    const [dataArray, setDataArray] = useState([])
 
     const submitPuzzle = async (req,res) => {
         let count = 0
@@ -36,7 +35,6 @@ import uniqid from 'uniqid'
             console.log(colorOne + colorTwo)
             
             let puzzleData = {
-                id: props.puzzle_id || undefined,
                 title: title,
                 description: description,
                 genre: genre,
@@ -48,14 +46,14 @@ import uniqid from 'uniqid'
                 featured: false
             }
 
-            console.log(puzzleData.title)
+            
 
             
 
 
             const jwtToken = sessionStorage.getItem('jwtToken')
 
-            if (initDataArray === undefined){
+            
                 const response = await fetch("http://localhost:3000/create", {
                     method: 'POST',
                     mode: 'cors',
@@ -68,30 +66,15 @@ import uniqid from 'uniqid'
                 })
                 .then(response => response.text()) 
                 .then(text => console.log(text));
-            }
-            else {
-
-                const response = await fetch(`http://localhost:3000/edit/${genre}/puzzles/${}`, {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: {
-                        "content-type": "application/json",
-                        "authorization": `Bearer ${jwtToken}`
-                    },
-                    body: JSON.stringify(puzzleData)
-                    
-                })
-                .then(response => response.text()) 
-                .then(text => console.log(text));
-
-            }
+            
+            
             
             
 
             
             
             
-        }
+    }
         catch (error) {
             console.error(error)
         }
