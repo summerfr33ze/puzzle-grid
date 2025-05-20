@@ -121,7 +121,7 @@ function Edit(props) {
     )
     }
     else {
-        return <EditGrid puzzleId={puzzleId} chosenCellsPerSide={puzzle.cells_per_side} hasHappenedOnce={hasHappenedOnce} title={puzzle.title} description={chosenDescription} playTime={chosenPlayTime} genreId={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}   data={puzzle.data_array} />
+        return <EditGrid puzzleId={puzzleId} chosenCellsPerSide={puzzle.cells_per_side} hasHappenedOnce={hasHappenedOnce} title={puzzle.title} description={chosenDescription} playTime={chosenPlayTime} genreId={chosenGenre} featured={featured} colorOne={chosenColorOne} colorTwo={chosenColorTwo}   data={puzzle.data_array} userId={puzzle.userId} />
     }
 
 

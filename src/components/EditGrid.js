@@ -6,7 +6,7 @@ import uniqid from 'uniqid'
 
  function EditGrid(props){
     
-    const {puzzleId, chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genreId, featured, colorOne, colorTwo, data, originalTitle} = props
+    const {puzzleId, chosenCellsPerSide, hasHappenedOnce, title, description, playTime, genreId, featured, colorOne, colorTwo, data, userId} = props
     
     let [dataArray, setDataArray] = useState(data)
 
@@ -39,6 +39,7 @@ import uniqid from 'uniqid'
                 title: title,
                 description: description,
                 genre: genreId,
+                userId: userId,
                 play_time: playTime,
                 cells_per_side: chosenCellsPerSide,
                 data_array: dataArray,
