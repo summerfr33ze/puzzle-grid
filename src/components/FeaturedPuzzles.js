@@ -41,8 +41,9 @@ import Link from 'react-router-dom'
             currentPuzzles.map((puzzle) => {
             let puzzleId = puzzle._id
             let genre = puzzle.genre.title
-            console.log(props.type, genre)
-            console.log(puzzle)
+            if (props.type === "All"){
+                genre = props.type
+            }
             const navigateToPuzzle = () => navigate(`/genres/${genre}/puzzles/${puzzleId}`)
             
             if(genre === props.type){

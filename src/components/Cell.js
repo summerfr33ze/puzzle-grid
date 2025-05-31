@@ -58,6 +58,7 @@ function AnswerCell(props) {
     const [displayedAnswerValue, setDisplayedAnswerValue] = useState('')
     const [hintValue, setHintValue] = useState('')
     const [acceptedAnswerValues, setAcceptedAnswerValues] = useState('')
+    const [autoSubmit, setAutoSubmit] = useState(false)
     
     
     function submitCellData (event){
@@ -74,7 +75,7 @@ function AnswerCell(props) {
         cellData.displayed_answer = displayedAnswerValue
         cellData.accepted_answers = answerArray
         cellData.hint = hintValue
-
+        cellData.auto_submit = autoSubmit
         }
     }
 
@@ -105,6 +106,8 @@ function AnswerCell(props) {
                 <Form.Control name="displayed-answer" className="field"  onChange={(event) => {setDisplayedAnswerValue(event.target.value)}} ></Form.Control>
                 <Form.Label htmlFor="accepted-answer" >Accepted Answers</Form.Label>
                 <Form.Control name="accepted-answer" className="field"  onChange={(event) => {setAcceptedAnswerValues(event.target.value)}} ></Form.Control>
+                <Form.Label htmlFor="auto-submit-cell">Auto submit cell?</Form.Label>
+                <Form.Check name="auto-submit-cell" type="checkbox" onChange={(event) => {setAutoSubmit(event.target.value)}}></Form.Check>
                 <button type="submit" hidden></button>
                 </Form>
             
@@ -140,6 +143,7 @@ function PlayerAnswerCell(props) {
     const displayedAnswer = props.displayed_answer
     const acceptedAnswers = props.accepted_answers
     const hint = props.hint
+    const autoSubmit = props.auto_submit
     
     /* make answer and accepted answers lower case so that answers aren't case sensitive
     check answer against array of accepted answers */
@@ -209,7 +213,7 @@ function PlayerAnswerCell(props) {
     else {
 
         
-        if (checkAnswer(answerValue, acceptedAnswers) && hasBeenClicked){
+        if (autoSubmit === "on" || checkAnswer(answerValue, acceptedAnswers) && hasBeenClicked ){
            
             return (
                 <div className="grid-cell div-cell" style={{backgroundColor: colorOne, color: colorTwo }} onClick={changeColor}>

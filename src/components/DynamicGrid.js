@@ -103,7 +103,8 @@ import uniqid from 'uniqid'
                         id: answerCellUniqid,
                         displayed_answer: '',
                         accepted_answers: [],
-                        hint: ''
+                        hint: '',
+                        auto_submit: "off"
                     }
                     
                     tempDataArray.push(nameCellData, answerCellData)
@@ -137,7 +138,7 @@ import uniqid from 'uniqid'
                             return <NameCell key={cellData.id} id={cellData.id}  dataArray={dataArray} setDataArray={setDataArray}  />
                         }
                         else {
-                           return <AnswerCell key={cellData.id} id={cellData.id} dataArray={dataArray} setDataArray={setDataArray}/>
+                           return <AnswerCell key={cellData.id} id={cellData.id} dataArray={dataArray} setDataArray={setDataArray} />
                         }
                         
                     })

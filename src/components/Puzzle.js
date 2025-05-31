@@ -74,7 +74,7 @@ function Puzzle (props){
                         }
                         else {
                             
-                            return <PlayerAnswerCell key={uniqId} id={i} hint={cellData.hint} displayed_answer={cellData.displayed_answer} accepted_answers={cellData.accepted_answers}  is_playing={isPlaying} end_game={endGame} is_ended={isEnded} has_been_clicked={hasBeenClicked.current} color_one={puzzle.color_one} color_two={puzzle.color_two}/>
+                            return <PlayerAnswerCell key={uniqId} id={i} hint={cellData.hint} displayed_answer={cellData.displayed_answer} accepted_answers={cellData.accepted_answers}  is_playing={isPlaying} end_game={endGame} is_ended={isEnded} has_been_clicked={hasBeenClicked.current} color_one={puzzle.color_one} color_two={puzzle.color_two} auto_submit={puzzle.auto_submit}  />
                         }
                     })
                     
